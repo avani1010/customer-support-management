@@ -83,3 +83,9 @@ Features used:
 
 ```bash
 pip install torch transformers datasets scikit-learn fastapi uvicorn
+```
+## Run the UI
+
+```bash
+python ui/app.py
+```
