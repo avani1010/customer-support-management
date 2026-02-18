@@ -83,6 +83,7 @@ Features used:
 
 ```bash
 pip install torch transformers datasets scikit-learn fastapi uvicorn
+pip install gradio
 ```
 ## Run the UI
 
