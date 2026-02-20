@@ -1,6 +1,4 @@
 .idea/
 .DS_Store
 __pycache__/
-/translated.ipynb
-/translated_dataset.ipynb
-/libre_instruction.md
+
