@@ -29,11 +29,6 @@ Model used (in-trial):
 
 DistilBert
 
-RoBERTa
-
-microsoft/mdeberta-v3-base  
-(DeBERTa-V3 Transformer)
-
 Why this model?
 
 - Disentangled attention mechanism
