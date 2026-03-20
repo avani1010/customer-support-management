@@ -1,0 +1,27 @@
+# Service Outages and Maintenance — Routing Policy
+
+Route to Service Outages and Maintenance for:
+- Service is completely down, cannot access service at all, total outage, system unavailable
+- Widespread service disruption, multiple users affected, company-wide outage, regional outage
+- Planned maintenance notification, scheduled maintenance, maintenance window, planned downtime
+- Unplanned outage, unexpected downtime, service went down without notice, emergency outage
+- Partial service degradation, some features not working, intermittent service, sporadic failures
+- Network infrastructure failure, internet backbone issue, ISP problem, connectivity to service down
+- Server outage, server not responding, backend down, database unavailable
+- Cloud service provider outage, AWS down, Azure outage, infrastructure provider issues
+- Website not loading, portal inaccessible, login page not responding, site completely down
+- API endpoint not responding, API gateway down, service unavailable error 503, backend unreachable
+- Status page update request, when will service be restored, estimated time for fix, outage duration
+- Impact assessment of outage, what services are affected, which features are down, scope of outage
+- Post-outage report request, what caused the outage, root cause analysis, incident report
+- Recurring outages, service keeps going down, frequent disruptions, stability concerns
+- Maintenance schedule inquiry, when is next maintenance, upcoming maintenance windows, planned outage calendar
+- Emergency maintenance notification, urgent maintenance needed, critical patch deployment, immediate service interruption
+- Rollback after maintenance, issues after update, problems since maintenance, revert to previous version
+- Service restoration confirmation, is service back up, has issue been resolved, service recovery verification
+- Data center issues, physical infrastructure problems, power outage, cooling failure, hardware failure at facility
+- Disaster recovery, major incident affecting all services, catastrophic failure, full system recovery needed
+- Performance degradation affecting everyone, slow for all users, system-wide slowness, capacity issues
+- Third-party dependency outage, external service we rely on is down, upstream provider issue
+- Monitoring and alerting for outages, want to be notified of outages, status notifications, incident alerts
+- Preventive maintenance, proactive system updates, infrastructure improvements, capacity expansion maintenance

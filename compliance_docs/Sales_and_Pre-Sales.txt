@@ -1,0 +1,26 @@
+# Sales and Pre-Sales — Routing Policy
+
+Route to Sales and Pre-Sales for:
+- Product demonstration request, want to see demo, schedule product demo, live walkthrough
+- Pricing inquiry before purchase, how much does it cost, quote request, pricing information for potential buyer
+- Pre-sales consultation, help me decide if product is right, evaluation assistance, suitability assessment
+- Feature comparison for buying decision, compare your product to competitors, which plan should I choose
+- Custom solution inquiry, need tailored solution, enterprise custom development, bespoke implementation
+- Volume or enterprise pricing, bulk discount, corporate pricing, multi-user license quote
+- Free trial request, want to try before buying, trial extension, evaluation period
+- Contract negotiation, terms and conditions discussion, service level agreement, legal review before purchase
+- Proof of concept request, POC setup, pilot program, evaluation deployment
+- Integration compatibility before purchase, will it work with our systems, pre-sales technical assessment
+- Onboarding process questions from prospect, what happens after I buy, implementation timeline, setup assistance
+- Product roadmap inquiry, future features, upcoming releases, development plans
+- Case study request for sales evaluation, customer success stories, reference clients, industry examples
+- Vendor assessment questions, security questionnaire, compliance documentation for procurement
+- Request for proposal response, RFP submission, bid process, tender requirements
+- Partnership opportunity, become a partner, reseller inquiry, channel sales
+- Educational or nonprofit pricing, academic discount, special pricing for organizations
+- Migration from competitor, switching from another product, competitive displacement, transition support
+- Product availability for new purchase, when can I get it, pre-order, product launch date
+- Sales territory or regional availability, do you sell in my country, regional restrictions, geographic coverage
+- Payment terms for new purchase, payment schedule, invoicing terms, purchase order process
+- Marketing agency suitability, solutions for marketing firms, advertising agency tools, campaign management features for prospects
+- Financial services product inquiry, investment platform features, trading system capabilities for potential clients

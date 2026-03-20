@@ -1,0 +1,24 @@
+# Returns and Exchanges — Routing Policy
+
+Route to Returns and Exchanges for:
+- Product return request, want to return item, need to send product back, return authorization
+- Defective product, item not working properly, received damaged goods, quality issues with product
+- Wrong item received, ordered one thing received another, incorrect product shipped
+- Product does not meet expectations, not as described, not satisfied with purchase, change of mind
+- Exchange request, want different size, need different color, swap for another model
+- Return merchandise authorization, RMA number request, return label needed, return shipping instructions
+- Refund status after return, when will I get refund, returned item but no refund yet, refund processing time
+- Return policy questions, how long do I have to return, what is your return policy, restocking fees
+- Partial return request, returning some items from order, want to keep some items, selective return
+- Gift return without receipt, return gift, no original purchase information, gift exchange
+- Opened product return, can I return after opening, return policy for used items, opened box return
+- Extended return period request, past return window, exception to return policy, special circumstances return
+- International return, returning from different country, cross-border return, import duties on return
+- Warranty return, product under warranty, warranty claim, manufacturer defect return
+- Replacement request instead of refund, exchange for same item, replacement due to defect
+- Return shipping cost questions, who pays return shipping, free return label, return postage
+- Bulk return, returning multiple items, large order return, corporate return request
+- Return pickup scheduling, pickup service for return, don't want to ship back myself
+- Received wrong quantity, ordered 5 received 3, quantity discrepancy, missing items from order
+- Allergic reaction or medical reason for return, product caused issue, safety concern with product
+- Product recall, recall notification, voluntary return due to recall, safety recall response

@@ -1,0 +1,26 @@
+# Customer Service — Routing Policy
+
+Route to Customer Service for:
+- General product inquiries, what products do you offer, tell me about your services, product catalog request
+- Service offerings questions, what services are available, service packages, pricing information
+- Account setup assistance, how to create account, new customer onboarding, getting started help
+- General how-to questions, how do I use this feature, basic usage instructions, navigation help
+- Product recommendations, which product is right for me, help me choose, comparison between options
+- Account management questions, how to update profile, change account details, manage preferences
+- Non-technical questions, general information, company policies, business hours
+- Feedback and suggestions, feature request, improvement ideas, customer satisfaction survey
+- Complaint about service quality, dissatisfied with experience, poor customer service, escalation request
+- Marketing services inquiries, advertising options, promotional campaigns, brand management questions
+- Financial services questions, investment products, savings accounts, financial planning assistance
+- Product availability, is item in stock, when will product be available, backorder status
+- Shipping and delivery questions (non-return), order tracking, delivery time estimate, shipping options
+- General agency services, digital marketing services, content creation, campaign planning
+- Loyalty program questions, rewards points, membership benefits, customer perks
+- Documentation requests for general information, brochures, product catalogs, service agreements
+- Multi-channel support requests, prefer phone call, want to schedule meeting, escalate to manager
+- Language or accessibility support, need assistance in different language, accessibility accommodations
+- Partnership inquiries, become a reseller, business collaboration, affiliate program
+- Community or forum support, where to find user community, knowledge base location, FAQ access
+- General SaaS platform questions, platform overview, feature list, demo request
+- Industry-specific inquiries when not technical, healthcare solutions overview, financial sector services, marketing agency suitability
+- Event or webinar registrations, training sessions, customer education programs

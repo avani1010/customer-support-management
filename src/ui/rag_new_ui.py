@@ -156,19 +156,16 @@ def try_hf_download(repo_id: str, filename_candidates: list[str], hf_token: str 
 
 faiss_index = None
 rag_metadata = None
-corpus_texts: list[str] = []
-corpus_queues: list[str] = []
-corpus_priorities: list[str] = []
 
 try:
     faiss_path = try_hf_download(
         repo_id=RAG_REPO_ID,
-        filename_candidates=["rag_index.faiss"],
+        filename_candidates=["rag_compliance_index.faiss"],
         hf_token=HF_TOKEN,
     )
     metadata_path = try_hf_download(
         repo_id=RAG_REPO_ID,
-        filename_candidates=["rag_metadata.pkl"],
+        filename_candidates=["rag_compliance_metadata.pkl"],
         hf_token=HF_TOKEN,
     )
 
@@ -176,11 +173,12 @@ try:
     with open(metadata_path, "rb") as f:
         rag_metadata = pickle.load(f)
 
-    corpus_texts = rag_metadata.get("texts") or rag_metadata.get("corpus_texts") or []
-    corpus_queues = rag_metadata.get("queues") or rag_metadata.get("corpus_queues") or []
-    corpus_priorities = rag_metadata.get("priorities") or rag_metadata.get("corpus_priorities") or []
-
-    print(f"[startup] FAISS: {faiss_index.ntotal} vectors, {len(corpus_texts)} texts.")
+    rule_chunks = (rag_metadata.get("chunks") or rag_metadata.get("texts")
+               or rag_metadata.get("corpus_texts") or [])
+    rule_depts  = (rag_metadata.get("departments") or rag_metadata.get("queues")
+                or rag_metadata.get("corpus_queues") or [])
+    print(f"[startup] FAISS {faiss_index.ntotal} vectors, {len(rule_chunks)} rule chunks "
+        f"across {len(set(rule_depts))} depts.")
 except Exception as e:
     print(f"[startup][WARN] RAG disabled: could not load repo '{RAG_REPO_ID}'.")
     print(f"[startup][WARN] Reason: {e}")
@@ -286,24 +284,21 @@ def llm_preprocess(raw_text: str) -> dict:
 # =========================
 # RAG retrieval
 # =========================
-def retrieve_similar_tickets(query_text: str, k: int = 5) -> list[dict]:
+def retrieve_routing_rules(query_text: str, k: int = 5) -> list[dict]:
     if faiss_index is None:
         return []
-
-    vec = embedder.encode(query_text, normalize_embeddings=True, convert_to_numpy=True).reshape(1, -1)
+    vec = embedder.encode([query_text], normalize_embeddings=True, convert_to_numpy=True).reshape(1, -1)
     scores, indices = faiss_index.search(vec, k)
-
     results = []
     for score, idx in zip(scores[0], indices[0]):
-        results.append(
-            {
-                "text": corpus_texts[idx][:300] if idx < len(corpus_texts) else "",
-                "queue": corpus_queues[idx] if idx < len(corpus_queues) else "",
-                "priority": corpus_priorities[idx] if idx < len(corpus_priorities) else "",
-                "similarity": round(float(score), 4),
-            }
-        )
+        results.append({
+            "text":      rule_chunks[idx] if idx < len(rule_chunks) else "",
+            "queue":     rule_depts[idx] if idx < len(rule_depts) else "",
+            "priority":  None,              # compliance docs carry no priority signal
+            "similarity": round(float(score), 4),
+        })
     return results
+
 
 
 # =========================
@@ -393,14 +388,19 @@ def ensemble_predict(text: str, retrieved: list[dict], base_alpha: float = 0.7) 
 
     priority_vote = defaultdict(float)
     for r in retrieved:
-        priority_vote[r["priority"]] += r["similarity"]
+        if r["priority"] is not None:          # compliance docs have no priority signal
+            priority_vote[r["priority"]] += r["similarity"]
 
-    total_p = sum(priority_vote.values()) or 1.0
-    rag_priority_probs = {label: score / total_p for label, score in priority_vote.items()}
-    rag_priority = max(priority_vote, key=priority_vote.get) if priority_vote else t["priority_pred"]
-
-    alpha_p = base_alpha + (t["priority_conf"] - 0.5) * 0.4
-    alpha_p = max(0.4, min(0.95, alpha_p))
+    if priority_vote:                          # RAG has priority signal (future-proofed)
+        total_p = sum(priority_vote.values()) or 1.0
+        rag_priority_probs = {label: score / total_p for label, score in priority_vote.items()}
+        rag_priority = max(priority_vote, key=priority_vote.get)
+        alpha_p = base_alpha + (t["priority_conf"] - 0.5) * 0.4
+        alpha_p = max(0.4, min(0.95, alpha_p))
+    else:                                      # no priority signal — pure transformer
+        rag_priority_probs = {}
+        rag_priority = t["priority_pred"]
+        alpha_p = 1.0
 
     combined_priority = {}
     for _, label in priority_id_to_label.items():
@@ -409,6 +409,13 @@ def ensemble_predict(text: str, retrieved: list[dict], base_alpha: float = 0.7) 
         combined_priority[label] = alpha_p * t_prob + (1 - alpha_p) * r_prob
 
     final_priority = max(combined_priority, key=combined_priority.get) if combined_priority else t["priority_pred"]
+
+    # If transformer predicted the merged class, defer final routing to RAG
+    MERGED_CLASS = "Technical & IT Support"
+    if final_queue == MERGED_CLASS and rag_probs:
+        rag_winner = max(rag_probs, key=rag_probs.get)
+        final_queue = rag_winner
+        veto_triggered = True   # reuse the veto flag so the UI shows "RAG overrode"
 
     return {
         "final_queue": final_queue,
@@ -437,7 +444,7 @@ def full_pipeline(raw_text: str) -> dict:
     llm_result = llm_preprocess(raw_text)
     cleaned_body = clean_text(llm_result["structured_body"])
 
-    retrieved = retrieve_similar_tickets(cleaned_body, k=5)
+    retrieved = retrieve_routing_rules(cleaned_body, k=5)
     ensemble = ensemble_predict(cleaned_body, retrieved)
 
     return {
@@ -819,16 +826,14 @@ def render_llm_panel(result: dict) -> str:
 
 def render_rag_panel(result: dict) -> str:
     if not result["retrieved"]:
-        return "## RAG\n\nRAG disabled or no retrieved tickets."
-    lines = ["## RAG top 5 similar tickets", ""]
+        return "RAG disabled or no compliance rules retrieved."
+    lines = ["RAG — Compliance Rules Retrieved", ""]
     for i, rt in enumerate(result["retrieved"], 1):
-        bar = "█" * int(rt["similarity"] * 20)
-        lines += [
-            f"**{i}.** {rt['queue']}  |  {rt['priority'].capitalize()}  |  sim={rt['similarity']:.4f}  {bar}",
-            f"> {rt['text']}...",
-            "",
-        ]
+        bar = int(rt["similarity"] * 20)
+        lines += [f"{i}. [{rt['queue']}] | Similarity: {rt['similarity']:.4f}  {'█' * bar}",
+                  f"   {rt['text']}", ""]
     return "\n".join(lines)
+
 
 def render_rag_vote_breakdown(result: dict) -> str:
     # UI FIX: fenced code block keeps the “bar list” readable

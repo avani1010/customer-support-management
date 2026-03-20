@@ -1,0 +1,26 @@
+# Human Resources — Routing Policy
+
+Route to Human Resources for:
+- Employee onboarding, new hire setup, employee account creation, new employee equipment request
+- Employee offboarding, employee departure, deactivate employee account, equipment return from departing employee
+- HR payroll portal login for employees, payroll staff access request, employee salary portal credentials, HR system login for payroll administrators
+- Benefits enrollment problems, cannot enroll in benefits, health insurance setup, retirement plan access
+- Employee information update, change employee details, update personnel records, employee data correction
+- HR software issues, HRIS problems, HR portal not working, employee management system errors
+- Employee timesheet submission problems, HR time tracking portal issues, staff attendance recording system errors, clocking in system not working for employees
+- Performance review system access, cannot access performance portal, review deadline issues
+- Training and development system, learning management system problems, cannot access training materials
+- Company directory issues, employee directory not working, organizational chart access, contact list problems
+- Employee laptop or equipment requests, need new work computer, equipment replacement, hardware provision for staff
+- Office application licensing for employees, Microsoft Office activation, Adobe license problems, software licensing for staff
+- Employee badge or access card issues, building access, security badge, physical access problems
+- Company email setup for employee, new employee email account, email forwarding for employee, distribution list management
+- New employee VPN account provisioning, HR onboarding VPN setup request, IT access request for new hire, work from home equipment provisioning for new staff
+- Employee policy questions when system-related, accessing employee handbook online, policy portal issues
+- Internal communication tools for staff, Slack access, Microsoft Teams setup, employee collaboration tools
+- Employee self-service portal issues, HR portal problems, cannot update personal information, employee dashboard not working
+- Leave management system, cannot request time off, vacation tracking issues, sick leave system problems
+- Expense reporting system for employees, cannot submit expenses, reimbursement portal issues, travel expense system
+- Employee certification tracking, professional development records, credential management system
+- Workplace accommodation requests system, accessibility tools for employees, adaptive technology setup
+- Internal IT requests for HR department staff, HR team computer problems, HR-specific application issues

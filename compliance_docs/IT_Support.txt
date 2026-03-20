@@ -1,0 +1,23 @@
+# IT Support — Routing Policy
+
+Route to IT Support for:
+- Login failures, cannot log in, password reset, account locked, authentication error, credentials expired, two-factor authentication not working
+- Network connectivity issues, WiFi down, ethernet not working, internet connection lost, VPN disconnection, VPN not connecting, cannot access network
+- Hardware malfunctions, device not working, computer won't start, laptop broken, desktop freezing, keyboard malfunction, mouse not responding
+- Printer problems, printer offline, cannot print, printer not recognized, print queue stuck, driver issues
+- Software installation failures, application won't install, installation error, software crashes, program not launching
+- System performance issues, computer running slow, high CPU usage, memory problems, disk space full, system freezing
+- Operating system errors, Windows update failed, macOS compatibility, Linux configuration, OS crash, boot failure
+- Device compatibility problems, hardware not recognized, driver missing, firmware update needed, peripheral not detected
+- Network infrastructure, router configuration, switch problems, network outage, DNS issues, DHCP failures
+- Remote access problems, remote desktop not working, VPN setup, secure shell access, remote connectivity
+- Email client issues, Outlook not syncing, email cannot send, IMAP configuration, SMTP error
+- Internal IT systems, domain controller, Active Directory, group policy, server access
+- Workstation setup, new employee computer, desk phone configuration, monitor setup, docking station problems
+- Multi-device connectivity failures, office-wide network disruptions, infrastructure failures affecting multiple users simultaneously
+- Browser issues, cache problems, cookie errors, site not loading, SSL certificate warnings
+- Security software problems, antivirus not updating, firewall blocking access, endpoint protection errors
+- File sharing problems, shared drive not accessible, permissions error, file server down
+- Backup and recovery, backup failed, restore needed, data recovery request
+- Mobile device management, smartphone not syncing, tablet configuration, bring your own device issues
+- Conference room technology, projector not working, video conferencing equipment, HDMI connection problems, screen mirroring failures

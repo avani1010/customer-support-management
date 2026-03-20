@@ -1,0 +1,26 @@
+# General Inquiry — Routing Policy
+
+Route to General Inquiry for:
+- Unclear or vague requests, not sure what I need, general question, don't know who to ask
+- Organizational structure questions, who should I contact, which department handles this, company organization
+- Multiple topics in one ticket, several different questions, covers multiple departments, complex multi-part inquiry
+- Company information requests, about your company, company history, business information
+- Policy questions not specific to any department, general company policies, procedural questions, how things work here
+- Contact information requests, how to reach specific person or team, looking for contact details, department phone numbers
+- Navigating support system, how to submit ticket properly, where to find resources, support process questions
+- Misdirected tickets, think I submitted to wrong department, ticket routing assistance, need to redirect my issue
+- General clarification needed before routing, need more information to understand request, unclear ticket subject
+- First contact from new or potential customer without clear need, exploring your services, general interest, initial inquiry
+- No clear action or request stated, just providing information, notification without question, status update without specific need
+- Administrative tasks not fitting other categories, general administrative assistance, miscellaneous requests
+- Organizational updates or changes, company restructure notification, department change information, process changes
+- Multi-department coordination needed, issue spans multiple teams, requires cross-functional response
+- Feedback not specific to any system, general suggestions, company-wide improvement ideas, broad feedback
+- Request for information without clear category, information gathering, exploratory question, broad topic inquiry
+- Legal or compliance questions not technical, contract questions, legal terms clarification, regulatory inquiry
+- Procurement or vendor questions from internal staff, supplier inquiry, vendor management, purchasing process
+- Facility or office location questions, where is your office, visiting your location, facility information
+- Career or employment inquiries, job openings, recruitment questions, hiring process information
+- Media or press inquiries, journalist request, public relations, media contact
+- Language support routing, need assistance in specific language, translation needed, multilingual support request
+- Accessibility accommodations, need support for disability, accessibility features, accommodation request

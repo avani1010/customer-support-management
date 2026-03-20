@@ -1,0 +1,25 @@
+# Billing and Payments — Routing Policy
+
+Route to Billing and Payments for:
+- Incorrect invoice, wrong billing amount, invoice discrepancy, invoice error, billing mistake
+- Duplicate charge, charged twice, double billing, multiple charges for same service
+- Payment not processed, payment failed, credit card declined, transaction error, payment rejected
+- Refund request due to billing error, overcharged, charged for cancelled service, want money back
+- Subscription renewal issues, auto-renewal failed, subscription not active, billing cycle questions
+- Payment method problems, need to update credit card, change payment method, payment information expired
+- Account balance inquiries, outstanding payment, account credit, balance discrepancy, payment history
+- Billing cycle confusion, when will I be charged, billing date questions, invoice schedule
+- Plan upgrade or downgrade billing, pricing tier change, subscription modification charges
+- Late payment fees, penalty charges, interest charges, payment deadline questions
+- Invoice not received, missing invoice, need copy of bill, billing statement request
+- Disputed charges, unauthorized charge, did not receive service billed, want to contest bill
+- Tax questions on invoice, VAT issues, sales tax calculation, tax exemption request
+- Payment confirmation not received, need receipt, proof of payment, transaction verification
+- Credit note request, adjustment needed, billing correction, account credit due
+- Prepayment or advance payment, pay early, bulk payment discount, annual billing option
+- Automated payment setup, recurring billing setup, scheduled payments, auto-pay enrollment
+- Payment plan request, installment options, payment arrangement due to financial difficulty
+- Third-party billing questions, corporate billing, purchase order payment, invoicing to different entity
+- Currency conversion charges, international payment fees, foreign transaction questions
+- Cancellation and final billing, service terminated but still charged, final invoice questions
+- Promotional pricing not applied, discount code not working, special offer missing from bill
