@@ -1,0 +1,32 @@
+
+DEPARTMENT: Billing and Payments
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The Billing and Payments department handles all matters related to financial 
+transactions, invoices, subscription charges, refunds, payment failures, and 
+billing discrepancies. A ticket should be routed here whenever the customer's 
+core concern is money leaving or not leaving their account, an invoice being 
+incorrect, or a payment method failing. Note that if a customer cannot access 
+their account because of a suspected payment issue (e.g., subscription lapsed, 
+card declined), this is a Billing ticket — not an IT Support ticket — because 
+the root cause is financial, not technical.
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "A financial organization encountered difficulties with data synchronization across various applications, potentially due to software conflicts. Reboot attempts and updates did not resolve the problem."
+  - "Customer Support is reaching out to highlight a critical issue concerning payment problems impacting several products offered by the financial firm. Despite efforts to optimize investments through data analytics, we are ..."
+  - "Could you please provide details on digital strategy services for brand growth? Thank you."
+  - "A financial organization has identified billing inconsistencies impacting several products, such as antivirus solutions, potentially due to a synchronization error in their system. An attempt was made to manually review ..."
+  - "Dear Support,\n\nI am writing to address an inaccurate invoice generated recently, which appears to be due to outdated billing data. Despite my attempts to correct the issue, I have not managed to resolve it successfully..."
+  - "Customer Support team, I am reaching out to highlight a significant problem our company is currently experiencing. We are having difficulty analyzing data efficiently due to software incompatibilities. Despite multiple a..."
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Billing and Payments when: the customer mentions charges, invoices, 
+refunds, payment failures, subscription renewals, credit card declines, double 
+billing, or any financial transaction. Do not route here if the customer's issue 
+is purely about a product being defective (Returns and Exchanges) or a system 
+being unavailable for non-payment reasons (IT Support or Service Outages).

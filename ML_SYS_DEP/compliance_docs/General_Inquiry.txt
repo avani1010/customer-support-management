@@ -1,0 +1,31 @@
+
+DEPARTMENT: General Inquiry
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The General Inquiry department handles questions and requests that are 
+informational in nature and do not require any technical resolution, financial 
+action, or complaint handling. These are typically pre-purchase questions, 
+questions about company policies, requests for documentation or certification, 
+questions about compatibility or system requirements, and queries about office 
+hours or contact information. A General Inquiry ticket does not require 
+investigation — it requires a knowledgeable and timely answer.
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "A significant data breach happened yesterday owing to inadequate encryption and obsolete software. We have initiated some steps like restarting the systems, reviewing the firewalls, and engaging with IT support, but the ..."
+  - "The digital marketing campaign has not met expectations, leading to decreased brand visibility and engagement. This might be due to low-quality content and ineffective targeting strategies. After analyzing the metrics an..."
+  - "While reaching out to Customer Support regarding the integration capabilities of the SaaS platform WooCommerce with Sage Accounting, I would appreciate detailed information on the systems that are currently integrated, i..."
+  - "Customer Support reports a potential data breach impacting multiple hospital systems. The suspected cause may be outdated security patches. Efforts to resolve the issue included updating Malwarebytes and Kaspersky, perfo..."
+  - "Customer Support reports that the company's data analytics platform has been experiencing sporadic slowdowns, likely due to higher query volumes. System load was monitored, caches were cleared, yet the issue persisted. T..."
+  - "Seeking information on integrating AutoCAD 2022 SaaS into our project management system. Could you provide details on the benefits this integration would bring to our team? We are currently using AutoCAD for design and S..."
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to General Inquiry when: the ticket is a question rather than a problem, 
+there is no technical failure described, no financial transaction is involved, 
+and the customer does not express dissatisfaction. If the question is clearly 
+pre-sales in nature (i.e., about pricing, trials, or purchasing), prefer Sales 
+and Pre-Sales instead.

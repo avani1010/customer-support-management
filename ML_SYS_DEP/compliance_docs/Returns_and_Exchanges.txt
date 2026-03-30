@@ -1,0 +1,32 @@
+
+DEPARTMENT: Returns and Exchanges
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The Returns and Exchanges department manages the physical lifecycle of product 
+returns, replacements, and exchanges. This includes initiating return requests, 
+tracking the status of items in transit back to the company, processing 
+replacements for defective or incorrect items, confirming refund timelines after 
+a return has been received, and resolving disputes where a return was submitted 
+but acknowledgement has not been received. This department is distinct from 
+Billing and Payments: a customer requesting a refund before sending an item back 
+goes to Billing; a customer who has already sent an item back and is waiting for 
+their refund comes here.
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "eager to explore integration possibilities within the PrestaShop project management SaaS. Would appreciate detailed information on how the two systems can operate together smoothly. Specifically, I am interested in under..."
+  - "I am keen to learn about integrating Google Cloud Platform project management SaaS solutions. Could you provide details on the available options to enhance our workflow? I would greatly appreciate any information you can..."
+  - "There were problems syncing project timelines, which could be because of errors in the integration with QuickBooks. We have already attempted to restart and reconnect the relevant applications, but the issue still exists..."
+  - "Customer Support, seeking information on integrating SAP ERP project management SaaS. Would appreciate details on the benefits, necessary requirements, and steps involved in the integration process. Specifically, interes..."
+  - "I am contacting you to learn more about digital approaches that can enhance brand growth for our products. Could you share any insights or suggestions on how to efficiently promote and expand our brand through digital ch..."
+  - "Assistance needed for security violation"
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Returns and Exchanges when: the customer has a physical product they 
+want to send back, has already sent one back, or is asking about the process 
+of doing so. Route to Billing and Payments if the conversation is only about 
+a refund amount or payment dispute with no physical product return involved.

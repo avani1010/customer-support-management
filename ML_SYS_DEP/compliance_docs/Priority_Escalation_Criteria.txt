@@ -1,0 +1,69 @@
+
+PRIORITY ESCALATION CRITERIA
+Universal routing guidance — applies across all departments
+============================================================
+ 
+OVERVIEW
+--------
+Priority is determined by business impact, urgency, and scope of effect —
+not by department. This document defines HIGH, MEDIUM, and LOW priority 
+criteria that apply regardless of which department a ticket is routed to.
+The transformer classifier predicts priority from ticket language patterns.
+This document provides grounding for when to confirm, escalate, or de-escalate 
+that prediction.
+ 
+PRIORITY: HIGH
+--------------
+Route as HIGH priority when any of the following apply:
+- Multiple users or the entire organisation is blocked from working
+- Revenue is actively being lost (e.g. checkout down, payments failing live)
+- A financial transaction has already occurred incorrectly (fraud, double charge,
+  unauthorised billing) and money needs to be recovered
+- A business-critical system is completely unavailable with no workaround
+- An employee cannot start work on day one due to missing access or equipment
+- A security incident is in progress (malware, ransomware, confirmed breach)
+- A deal is closing imminently and the customer is at risk of going to a competitor
+- There is regulatory, legal, or data safety exposure requiring immediate action
+- A return window is about to expire and the customer has not received a label
+ 
+Representative high-priority examples across departments:
+  - "An unauthorized access incident has occurred, leading to a compromise of medical data security within the hospital's systems. Potential causes may involve weak passwords and outdated software. Efforts to address the issu..."
+  - "The SaaS application is facing occasional connection problems. This could be due to network instability or software compatibility issues. Steps taken include restarting the router and clearing cache, but the problem stil..."
+  - "A financial organization encountered difficulties with data synchronization across various applications, potentially due to software conflicts. Reboot attempts and updates did not resolve the problem."
+  - "Customer Support is reaching out to highlight a critical issue concerning payment problems impacting several products offered by the financial firm. Despite efforts to optimize investments through data analytics, we are ..."
+  - "A report has been received regarding a possible security breach affecting the hospital's medical data security systems. The incident may involve unauthorized access attempts. Initial troubleshooting steps included resett..."
+ 
+PRIORITY: MEDIUM
+----------------
+Route as MEDIUM when the issue is real and needs resolution within normal SLA 
+windows but is not causing immediate loss or blocking the customer entirely.
+- Single user affected, not the whole organisation
+- Service is degraded but partially working
+- Billing discrepancy exists but no money lost yet
+- Escalation request where the customer is unhappy but stable
+- Process is behind schedule but has not yet caused a crisis
+- Pre-sales prospect is actively evaluating but not yet at decision stage
+- Return or exchange is in progress but not time-critical
+ 
+Representative medium-priority examples across departments:
+  - "Dear Customer Support, I am seeking advice on how to enhance the security of medical data within hospital systems utilizing Red Enterprise Linux Chef. As you may be aware, the healthcare sector is highly regulated and de..."
+  - "Noting the concern raised regarding the report on analytics platform issues, it has been observed that the system is unable to generate the anticipated investment forecasts. Despite attempts to refresh the data and resta..."
+  - "Unprecise forecasts have been observed"
+  - "Reporting connectivity problems with the Logitech K780 keyboard. The issue arises when using different SaaS applications and I suspect it could be due to Bluetooth interference or driver incompatibility. I have already t..."
+ 
+PRIORITY: LOW
+-------------
+Route as LOW when the ticket is informational, administrative, or when the 
+customer has explicitly indicated no urgency.
+- General question with no active problem
+- Request to update contact or billing details for future use
+- Pre-sales inquiry at early exploration stage with no deadline
+- Routine status check on an active but non-urgent ticket
+- Minor UI bug with no functional impact
+- Post-incident review request once service is fully restored
+ 
+Representative low-priority examples across departments:
+  - "Customer Support reports that the company's data analytics platform has been experiencing sporadic slowdowns, likely due to higher query volumes. System load was monitored, caches were cleared, yet the issue persisted. T..."
+  - "Seeking information on integrating AutoCAD 2022 SaaS into our project management system. Could you provide details on the benefits this integration would bring to our team? We are currently using AutoCAD for design and S..."
+  - "Dear Support,\n\nI am writing to address an inaccurate invoice generated recently, which appears to be due to outdated billing data. Despite my attempts to correct the issue, I have not managed to resolve it successfully..."
+  - "Customer Support team, I am reaching out to highlight a significant problem our company is currently experiencing. We are having difficulty analyzing data efficiently due to software incompatibilities. Despite multiple a..."
