@@ -1,0 +1,33 @@
+
+DEPARTMENT: Customer Service
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The Customer Service department is the primary point of contact for general 
+relationship management, complaints about service quality, requests for 
+information that span multiple departments, and situations where the customer 
+has had a poor experience and needs reassurance. This department does not own 
+any specific technical domain — rather, it handles the human side of support: 
+dissatisfied customers, escalations where the customer feels unheard, follow-ups 
+on unresolved tickets, and feedback submissions. If a ticket primarily expresses 
+frustration about how they were treated (rather than a specific technical or 
+billing problem), it belongs here.
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Customer Support, we are reaching out to inquire about securing medical data infrastructure in hospitals. Could you provide information on practices and measures to ensure the confidentiality, integrity, and availability..."
+  - "The investment optimization tools are not functioning correctly, leading to inaccurate data analysis as a result of an unexpected software update. After restarting the applications and checking data integrity, the issue ..."
+  - "Dear Customer Support, I am seeking advice on how to enhance the security of medical data within hospital systems utilizing Red Enterprise Linux Chef. As you may be aware, the healthcare sector is highly regulated and de..."
+  - "Noting the concern raised regarding the report on analytics platform issues, it has been observed that the system is unable to generate the anticipated investment forecasts. Despite attempts to refresh the data and resta..."
+  - "In recent times, users have reported experiencing sluggish response times when accessing various features on the project dashboard, particularly during peak traffic hours. Efforts have been made to pinpoint and address p..."
+  - "I am facing a login problem, which might be caused by the browser cache. Although I have attempted to clear the cookies, the issue remains unresolved. I urgently require assistance to address this problem. Could you kind..."
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Customer Service when: the customer is expressing dissatisfaction with 
+how they were treated, requesting an escalation, following up on an unresolved 
+issue without introducing a new specific technical problem, or when no other 
+department clearly owns the ticket. This department acts as a catch-all for 
+relationship-focused interactions.

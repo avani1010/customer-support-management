@@ -1,0 +1,34 @@
+
+DEPARTMENT: Service Outages and Maintenance
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The Service Outages and Maintenance department handles incidents and 
+communications related to infrastructure-level service disruptions that affect 
+multiple customers or a significant portion of users simultaneously, as well as 
+planned maintenance windows that may impact availability. Unlike IT Support — 
+which handles technical problems affecting individual users or teams — this 
+department deals with systemic issues: the platform is down for everyone, a 
+region is experiencing degraded performance, or a scheduled maintenance window 
+needs to be communicated. A ticket belongs here when the scope of impact goes 
+beyond a single user and the likely cause is infrastructure or platform-level.
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Conducted an analysis on the sudden service disruption"
+  - "We need to encrypt medical data across all systems to maintain confidentiality and security. Please provide details on the specific systems that need encryption. Afterward, we can schedule a call to review the implementa..."
+  - "Encountered unexpected downtime on various products, such as Twitch Studio Beta and MATLAB. The outage may be due to recent software updates or network issues. So far, restarting affected applications and checking server..."
+  - "Hello Customer Support, I am contacting you to report a network issue that is preventing access to essential medical data. It might be due to a malfunctioning TP-Link switch or a Wireless Adapter. I have already tried to..."
+  - "Noted intermittent service outages impacting various applications, possibly linked to recent updates or server overload. Services were restarted and server load is now being monitored."
+  - "A marketing agency encountered multiple disruptions in their service, which impacted the digital tools vital for brand development. The suspected cause is conflicts arising from recent system updates affecting integratio..."
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Service Outages and Maintenance when: multiple users are affected by 
+the same issue simultaneously, the issue appears to be platform or 
+infrastructure-level rather than user-specific, or the ticket is about a 
+planned maintenance event. If only one user is affected and the cause is 
+likely user-specific (e.g., their VPN config, their device), route to IT Support 
+instead.

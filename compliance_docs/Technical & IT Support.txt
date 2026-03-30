@@ -1,0 +1,38 @@
+
+DEPARTMENT: Technical & IT Support
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+ 
+OVERVIEW
+--------
+The IT Support department handles all technical issues related to hardware, 
+software, networks, cloud infrastructure, cybersecurity, and system access. 
+This department consolidates what was previously split across "Technical Support" 
+and "Product Support" — both are now handled here. A ticket belongs in IT Support 
+when the customer or employee is experiencing a technology failure that requires 
+diagnosis and resolution: something is broken, inaccessible, performing poorly, 
+or behaving unexpectedly, and the cause is technical rather than financial or 
+administrative.
+ 
+Note that account access issues caused by a billing lapse should be routed to 
+Billing and Payments, not here. IT Support handles access failures caused by 
+technical faults (password resets, authentication errors, VPN issues, account 
+lockouts due to security policies).
+ 
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "An unauthorized access incident has occurred, leading to a compromise of medical data security within the hospital's systems. Potential causes may involve weak passwords and outdated software. Efforts to address the issu..."
+  - "The SaaS application is facing occasional connection problems. This could be due to network instability or software compatibility issues. Steps taken include restarting the router and clearing cache, but the problem stil..."
+  - "Unprecise forecasts have been observed"
+  - "Reporting connectivity problems with the Logitech K780 keyboard. The issue arises when using different SaaS applications and I suspect it could be due to Bluetooth interference or driver incompatibility. I have already t..."
+  - "Facing sporadic connection disruptions within the SaaS platform. Even after optimizing database queries and restarting services, the issue continues. The team suspects that the MySQL server may be overloaded. Kindly seek..."
+  - "The tracking analytics indicate precise campaign performance metrics following the recent software updates."
+ 
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to IT Support when: the customer or employee reports a technical failure 
+in hardware, software, network, or cloud systems; a security incident; a 
+product malfunction; or any situation where the root cause is technology 
+rather than billing, HR, or a service-wide outage. If the issue is affecting 
+the entire organisation or a large region and appears to be infrastructure-level, 
+also consider Service Outages and Maintenance.
