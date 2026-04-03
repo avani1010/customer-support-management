@@ -4,15 +4,17 @@ Stage 2b — Hybrid RAG Retrieval
 
 import re, pickle
 import numpy as np
-import torch
-import torch.nn.functional as F
 import faiss
 from rank_bm25 import BM25Okapi
-from sentence_transformers import CrossEncoder
+from sentence_transformers import SentenceTransformer, CrossEncoder
 from huggingface_hub import hf_hub_download
 from pipeline.logger import get_logger
 
 log = get_logger("stage2b.retriever")
+
+# Dedicated retrieval embedding model: trained for semantic similarity,
+# not repurposed from the classification backbone.
+RETRIEVAL_MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
 
 
 def tokenize_for_bm25(text):
@@ -22,22 +24,28 @@ def tokenize_for_bm25(text):
 def load_rag_artifacts(hf_repo_id, hf_token):
     log.info(f"Loading RAG artifacts from {hf_repo_id}")
 
+    # Dedicated retrieval embedder — loaded here alongside the indexes it was used to build
+    embedder = SentenceTransformer(RETRIEVAL_MODEL_ID)
+    log.info(f"Retrieval embedder ready — dim: {embedder.get_sentence_embedding_dimension()}")
+
+    # Dept definition index
     faiss_index = faiss.read_index(
-        hf_hub_download(hf_repo_id, "rag_compliance_index.faiss", 
+        hf_hub_download(hf_repo_id, "rag_dept_index.faiss",
                         token=hf_token, repo_type="model")
     )
-    with open(hf_hub_download(hf_repo_id, "rag_bm25_index.pkl", 
+    with open(hf_hub_download(hf_repo_id, "rag_bm25_index.pkl",
                               token=hf_token, repo_type="model"), "rb") as f:
         bm25_data = pickle.load(f)
-    with open(hf_hub_download(hf_repo_id, "rag_compliance_metadata.pkl", 
+    with open(hf_hub_download(hf_repo_id, "rag_dept_metadata.pkl",
                               token=hf_token, repo_type="model"), "rb") as f:
         all_chunks = pickle.load(f)
 
+    # Priority escalation index
     priority_index = faiss.read_index(
-        hf_hub_download(hf_repo_id, "rag_priority_index.faiss", 
+        hf_hub_download(hf_repo_id, "rag_priority_index.faiss",
                         token=hf_token, repo_type="model")
     )
-    with open(hf_hub_download(hf_repo_id, "rag_priority_metadata.pkl", 
+    with open(hf_hub_download(hf_repo_id, "rag_priority_metadata.pkl",
                               token=hf_token, repo_type="model"), "rb") as f:
         priority_chunks = pickle.load(f)
 
@@ -45,20 +53,22 @@ def load_rag_artifacts(hf_repo_id, hf_token):
 
     log.info(f"Dept index: {faiss_index.ntotal} vectors | Priority index: {priority_index.ntotal} vectors")
     log.info(f"Dept chunks: {len(all_chunks)} | Priority chunks: {len(priority_chunks)}")
-    return faiss_index, bm25_data["bm25"], all_chunks, cross_encoder, priority_index, priority_chunks
+    return embedder, faiss_index, bm25_data["bm25"], all_chunks, cross_encoder, priority_index, priority_chunks
 
 
-def hybrid_retrieve(query, encoder, tokenizer, device,
+def _embed_query(query: str, embedder: SentenceTransformer) -> np.ndarray:
+    """Encode a query string into a normalised float32 vector."""
+    emb = embedder.encode(query, normalize_embeddings=True, show_progress_bar=False)
+    return emb.astype("float32").reshape(1, -1)
+
+
+def hybrid_retrieve(query, embedder,
                     faiss_index, bm25, all_chunks, cross_encoder,
                     top_k_dense=10, top_k_bm25=10, top_n_final=4):
     log.debug(f"Retrieving for: {query[:100]!r}")
 
-    # transformer encoder -> query embedding (same model as classifier)
-    inputs = tokenizer(query, return_tensors="pt", truncation=True, padding=True, max_length=256)
-    inputs = {k: v.to(device) for k, v in inputs.items() if k != "token_type_ids"}
-    with torch.no_grad():
-        out = encoder(**inputs)
-        q_emb = F.normalize(out.last_hidden_state[:, 0, :], p=2, dim=-1).cpu().numpy().astype("float32")
+    # Sentence embedder -> query vector (domain-matched to how docs were indexed)
+    q_emb = _embed_query(query, embedder)
 
     _, dense_ids = faiss_index.search(q_emb, top_k_dense)
     dense_ids = dense_ids[0].tolist()
@@ -84,16 +94,12 @@ def hybrid_retrieve(query, encoder, tokenizer, device,
     return results
 
 
-def retrieve_priority_chunk(query, encoder, tokenizer, device,
+def retrieve_priority_chunk(query, embedder,
                             priority_index, priority_chunks, cross_encoder):
     if not priority_index or not priority_chunks:
         return None
 
-    inputs = tokenizer(query, return_tensors="pt", truncation=True, padding=True, max_length=256)
-    inputs = {k: v.to(device) for k, v in inputs.items() if k != "token_type_ids"}
-    with torch.no_grad():
-        out = encoder(**inputs)
-        q_emb = F.normalize(out.last_hidden_state[:, 0, :], p=2, dim=-1).cpu().numpy().astype("float32")
+    q_emb = _embed_query(query, embedder)
 
     k = min(len(priority_chunks), 3)
     _, ids = priority_index.search(q_emb, k)

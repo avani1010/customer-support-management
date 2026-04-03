@@ -259,15 +259,8 @@ def build_dept_radar(result):
     top3 = result.transformer_top3
     labels = [r["dept"] for r in top3]
     t_vals = [r["prob"] for r in top3]
-    rag_scores = {}
-    for r in result.rag_chunks:
-        d = r["chunk"]["dept"]
-        rag_scores[d] = rag_scores.get(d, 0) + max(0, r["ce_score"])
-    total = sum(rag_scores.values()) or 1.0
-    r_vals = [rag_scores.get(l, 0.0) / total for l in labels]
     lc = labels + labels[:1]
     tc = t_vals + t_vals[:1]
-    rc = r_vals + r_vals[:1]
     fig = go.Figure()
     fig.add_trace(go.Scatterpolar(
         r=tc, theta=lc, fill="toself", name="Transformer",
@@ -275,16 +268,30 @@ def build_dept_radar(result):
         fillcolor="rgba(99,102,241,0.18)",
         marker=dict(size=6, color="#6366f1", symbol="circle"),
     ))
-    fig.add_trace(go.Scatterpolar(
-        r=rc, theta=lc, fill="toself", name="RAG vote",
-        line=dict(color="#fb923c", width=2.5),
-        fillcolor="rgba(251,146,60,0.12)",
-        marker=dict(size=6, color="#f97316", symbol="diamond"),
-    ))
+    # Only add RAG trace if RAG was actually invoked
+    if getattr(result, "rag_used", False) and result.rag_chunks:
+        rag_scores = {}
+        for r in result.rag_chunks:
+            d = r["chunk"]["dept"]
+            rag_scores[d] = rag_scores.get(d, 0) + max(0, r["ce_score"])
+        total = sum(rag_scores.values()) or 1.0
+        r_vals = [rag_scores.get(l, 0.0) / total for l in labels]
+        rc = r_vals + r_vals[:1]
+        fig.add_trace(go.Scatterpolar(
+            r=rc, theta=lc, fill="toself", name="RAG vote",
+            line=dict(color="#fb923c", width=2.5),
+            fillcolor="rgba(251,146,60,0.12)",
+            marker=dict(size=6, color="#f97316", symbol="diamond"),
+        ))
+        radial_max = max(tc + rc) * 1.2 or 1
+        title_text = "Department Signal Comparison"
+    else:
+        radial_max = max(tc) * 1.2 or 1
+        title_text = "Department Signal Comparison (transformer only — RAG not invoked)"
     fig.update_layout(
         polar=dict(
             radialaxis=dict(
-                visible=True, range=[0, max(tc + rc) * 1.2 or 1],
+                visible=True, range=[0, radial_max],
                 gridcolor="rgba(255,255,255,.08)", linecolor="rgba(255,255,255,.08)",
                 tickfont=dict(size=9, color="#64748b"), tickformat=".0%",
             ),
@@ -295,7 +302,7 @@ def build_dept_radar(result):
             bgcolor="#0f172a",
         ),
         showlegend=True, margin=dict(l=28, r=28, t=56, b=24), height=380,
-        title=dict(text="Department Signal Comparison",
+        title=dict(text=title_text,
                    font=dict(size=13, color="#e2e8f0", family="IBM Plex Sans, system-ui"), x=0.5),
         paper_bgcolor="#0f172a", plot_bgcolor="#0f172a",
         font=dict(family="IBM Plex Sans, system-ui", color="#94a3b8"),
@@ -340,21 +347,41 @@ def build_prio_radar(result):
 
 
 def render_routing_card(r):
-    agree = r.transformer_dept == r.department
-    prio  = r.priority.lower()
-    pc    = PCOLOR.get(prio, _TEXT3)
-    pbg   = PBG.get(prio, "rgba(99,102,241,.12)")
-    pbd   = PBORDER.get(prio, "rgba(99,102,241,.3)")
+    agree    = r.transformer_dept == r.department
+    prio     = r.priority.lower()
+    pc       = PCOLOR.get(prio, _TEXT3)
+    pbg      = PBG.get(prio, "rgba(99,102,241,.12)")
+    pbd      = PBORDER.get(prio, "rgba(99,102,241,.3)")
+    rag_used = getattr(r, "rag_used", True)
+    rag_reason = getattr(r, "rag_reason", "")
+
+    priority_probs = getattr(r, "priority_probs", {})
+    priority_conf  = priority_probs.get(r.priority.lower(), 0.0)
 
     dept_box = _stat_box("Department", r.department, value_size="15px")
     prio_box = _stat_box("Priority",
-        f'<span style="display:inline-flex!important;align-items:center!important;'
-        f'gap:5px!important;padding:4px 12px!important;border-radius:99px!important;'
-        f'background:{pbg}!important;color:{pc}!important;font-size:14px!important;'
-        f'font-weight:700!important;border:1px solid {pbd}!important">'
-        f'{PE.get(prio,"⚪")} {r.priority.capitalize()}</span>')
-    conf_box = _stat_box("LLM Confidence", r.confidence.capitalize(),
-                         sub=f"Transformer: {r.transformer_conf*100:.1f}%")
+                         f'<span style="display:inline-flex!important;align-items:center!important;'
+                         f'gap:5px!important;padding:4px 12px!important;border-radius:99px!important;'
+                         f'background:{pbg}!important;color:{pc}!important;font-size:14px!important;'
+                         f'font-weight:700!important;border:1px solid {pbd}!important">'
+                         f'{PE.get(prio,"⚪")} {r.priority.capitalize()}</span>')
+
+    dept_tick  = "✓" if r.transformer_conf >= 0.85 else "✗"
+    prio_tick  = "✓" if priority_conf >= 0.60 else "✗"
+    dept_color = "#4ade80" if r.transformer_conf >= 0.85 else "#f87171"
+    prio_color = "#4ade80" if priority_conf >= 0.60 else "#f87171"
+
+    conf_box = _stat_box(
+        "Transformer confidence",
+        (
+            f'<span style="font-size:12px!important;display:block!important;margin-bottom:3px!important">'
+            f'<span style="color:{dept_color}!important;font-weight:700!important">{dept_tick} Dept: {r.transformer_conf*100:.1f}%</span>'
+            f'&nbsp;&nbsp;'
+            f'<span style="color:{prio_color}!important;font-weight:700!important">{prio_tick} Priority: {priority_conf*100:.1f}%</span>'
+            f'</span>'
+        ),
+        sub="LLM priority conf: " + r.confidence.capitalize() if rag_used else "RAG not invoked"
+    )
 
     grid = (
         f'<div style="display:grid!important;grid-template-columns:1fr 1fr 1fr!important;'
@@ -362,37 +389,89 @@ def render_routing_card(r):
         f'{dept_box}{prio_box}{conf_box}</div>'
     )
 
-    if agree:
-        agree_html = (
-            f'<div style="display:flex!important;align-items:center!important;gap:8px!important;'
+    dept_passed = r.transformer_conf >= 0.85
+    prio_passed = priority_conf >= 0.60
+
+    if not rag_used:
+        path_html = (
+            f'<div style="display:flex!important;align-items:flex-start!important;gap:8px!important;'
             f'padding:9px 14px!important;border-radius:8px!important;font-size:13px!important;'
             f'font-weight:500!important;background:rgba(74,222,128,.1)!important;'
             f'color:#4ade80!important;border:1px solid rgba(74,222,128,.25)!important;'
-            f'margin-bottom:8px!important">'
-            f'✅ Transformer and Groq agree</div>'
+            f'margin-bottom:8px!important;flex-direction:column!important">'
+            f'<span>⚡ Fast path — transformer only (dept + priority both confident)</span>'
+            f'<span style="font-size:11px!important;font-weight:400!important;'
+            f'color:{_TEXT3}!important;font-family:monospace!important">{rag_reason}</span>'
+            f'</div>'
         )
+        agree_html = ""
     else:
-        agree_html = (
-            f'<div style="display:flex!important;align-items:center!important;gap:8px!important;'
-            f'padding:9px 14px!important;border-radius:8px!important;font-size:13px!important;'
-            f'font-weight:500!important;background:rgba(251,191,36,.1)!important;'
-            f'color:#fbbf24!important;border:1px solid rgba(251,191,36,.25)!important;'
-            f'margin-bottom:8px!important">'
-            f'⚠️ Transformer predicted <strong style="color:{_TEXT1}!important">{r.transformer_dept}</strong>'
-            f' — Groq overrides</div>'
-        )
+        if dept_passed:
+            dept_note = (
+                f'<span style="color:#4ade80!important">✓ Dept {r.transformer_conf*100:.1f}% ≥ 85% — '
+                f'transformer confident, used directly (dept retrieval skipped)</span>'
+            )
+        else:
+            dept_note = (
+                    f'<span style="color:#fbbf24!important">✗ Dept {r.transformer_conf*100:.1f}% &lt; 85% — '
+                    f'transformer uncertain, dept decided by RAG CrossEncoder'
+                    + (f' (overrides transformer: {r.transformer_dept})' if not agree else '')
+                    + '</span>'
+            )
 
+        if prio_passed:
+            prio_note = (
+                f'<span style="color:#4ade80!important">✓ Priority {priority_conf*100:.1f}% ≥ 60% — '
+                f'transformer confident, used directly (priority retrieval skipped)</span>'
+            )
+        else:
+            prio_note = (
+                f'<span style="color:#f87171!important">✗ Priority {priority_conf*100:.1f}% &lt; 60% — '
+                f'transformer uncertain, LLM applied escalation criteria</span>'
+            )
+
+        if not dept_passed and not prio_passed:
+            headline = "🔀 RAG invoked for dept · RAG, then LLM invoked for priority"
+        elif not dept_passed:
+            headline = "🔀 RAG invoked for dept · priority from transformer (confident)"
+        else:
+            headline = "🎯 Dept from transformer (confident) · RAG, then LLM invoked for priority only"
+
+        path_html = (
+            f'<div style="display:flex!important;align-items:flex-start!important;'
+            f'padding:10px 14px!important;border-radius:8px!important;font-size:12px!important;'
+            f'background:rgba(251,191,36,.08)!important;'
+            f'border:1px solid rgba(251,191,36,.2)!important;'
+            f'margin-bottom:8px!important;flex-direction:column!important;gap:6px!important">'
+            f'<span style="font-size:13px!important;font-weight:600!important;color:#fbbf24!important">'
+            f'{headline}</span>'
+            f'<span style="font-family:monospace!important;color:{_TEXT3}!important;font-size:11px!important">'
+            f'{rag_reason}</span>'
+            f'<div style="display:flex!important;flex-direction:column!important;gap:3px!important;'
+            f'margin-top:4px!important;font-size:12px!important">'
+            f'<div>🏢 <strong style="color:{_TEXT2}!important">Dept:</strong> &nbsp;{dept_note}</div>'
+            f'<div>🎯 <strong style="color:{_TEXT2}!important">Priority:</strong> {prio_note}</div>'
+            f'</div>'
+            f'</div>'
+        )
+        agree_html = ""
+
+    reasoning_label = "LLM priority reasoning" if (rag_used and not prio_passed) else "Reasoning"
     reasoning = (
         f'<div style="background:{_BG1}!important;border-left:3px solid {_ACCENT}!important;'
         f'border-radius:0 6px 6px 0!important;padding:10px 14px!important;'
         f'font-size:13px!important;color:{_TEXT2}!important;line-height:1.6!important">'
+        f'<span style="font-size:11px!important;color:{_TEXT4}!important;'
+        f'font-weight:600!important;text-transform:uppercase!important;'
+        f'letter-spacing:.06em!important">{reasoning_label}</span><br>'
         f'{r.reasoning}</div>'
     )
 
-    return _wrap(grid + agree_html + reasoning)
+    return _wrap(grid + path_html + agree_html + reasoning)
 
 
 def render_evidence_html(r):
+    rag_used = getattr(r, "rag_used", True)
     top3 = r.transformer_top3
     dept_bars = ""
     for item in top3:
@@ -415,110 +494,153 @@ def render_evidence_html(r):
                               PCOLOR.get(label, _TEXT4), tag)
 
     def _clean_section(s):
-        """Turn SLIDING_WINDOW_0 / OVERVIEW / ROUTING etc into readable label."""
-        s = re.sub(r"_\d+$", "", str(s))          # strip trailing _0, _1 …
+        s = re.sub(r"_\d+$", "", str(s))
         s = s.replace("_", " ").strip()
         return s.title() if s else "Excerpt"
 
     def _extract_body(raw, max_chars=220):
-        """Strip boilerplate header and return the most informative excerpt."""
         text = str(raw)
-        # Drop 'DEPARTMENT: X ROUTING SCOPE…' header lines
         text = re.sub(r"DEPARTMENT:.*?(?=\n|OVERVIEW|ROUTING|$)", "", text, flags=re.DOTALL|re.IGNORECASE)
-        # Drop section banners like ==== or ----
         text = re.sub(r"[=\-]{4,}.*?[=\-]{4,}", " ", text, flags=re.DOTALL)
-        # Drop remaining ALL-CAPS banner words at the start
         text = re.sub(r"^\s*(ROUTING SCOPE.*?\n|OVERVIEW.*?\n)", "", text, flags=re.IGNORECASE)
         text = re.sub(r"\s+", " ", text).strip()
-        # Take the first meaningful sentence block
         if len(text) > max_chars:
-            # Try to cut at a sentence boundary
             cut = text.rfind(". ", 0, max_chars)
             text = text[:cut + 1] if cut > 60 else text[:max_chars]
         return text.replace("<","&lt;").replace(">","&gt;")
 
-    rag_html = ""
-    for i, item in enumerate(r.rag_chunks, 1):
-        chunk = item["chunk"]
-        score_color = "#4ade80" if item["ce_score"] > 0 else "#fbbf24"
-        body = _extract_body(chunk["raw_body"])
-        section_label = _clean_section(chunk["section"])
-        rag_html += _card(
-            f'<div style="display:flex!important;justify-content:space-between!important;'
-            f'align-items:flex-start!important;margin-bottom:6px!important">'
-            f'<div><div style="font-size:13px!important;font-weight:600!important;'
-            f'color:{_TEXT1}!important">{i}. {chunk["dept"]}</div>'
-            f'<div style="font-size:11px!important;color:{_TEXT4}!important;'
-            f'font-family:monospace!important;margin-top:2px!important">{section_label}</div></div>'
-            f'<span style="font-size:11px!important;font-weight:700!important;padding:2px 8px!important;'
-            f'border-radius:99px!important;background:{_BG2}!important;color:{score_color}!important;'
-            f'white-space:nowrap!important;flex-shrink:0!important;margin-left:8px!important">'
-            f'CE {item["ce_score"]:.3f}</span></div>'
-            f'<div style="font-size:12px!important;color:{_TEXT3}!important;line-height:1.6!important;'
-            f'border-left:2px solid {_BORDER}!important;padding-left:10px!important">'
-            f'{body}…</div>'
+    if not rag_used:
+        rag_html = (
+            f'<div style="padding:16px!important;border-radius:8px!important;'
+            f'background:{_BG1}!important;border:1px solid {_BORDER}!important;'
+            f'color:{_TEXT4}!important;font-size:13px!important;text-align:center!important">'
+            f'⚡ RAG not invoked — transformer confidence exceeded threshold</div>'
         )
+        vote_html = ""
+    else:
+        rag_html = ""
+        for i, item in enumerate(r.rag_chunks, 1):
+            chunk = item["chunk"]
+            score_color = "#4ade80" if item["ce_score"] > 0 else "#fbbf24"
+            body = _extract_body(chunk["raw_body"])
+            section_label = _clean_section(chunk["section"])
+            rag_html += _card(
+                f'<div style="display:flex!important;justify-content:space-between!important;'
+                f'align-items:flex-start!important;margin-bottom:6px!important">'
+                f'<div><div style="font-size:13px!important;font-weight:600!important;'
+                f'color:{_TEXT1}!important">{i}. {chunk["dept"]}</div>'
+                f'<div style="font-size:11px!important;color:{_TEXT4}!important;'
+                f'font-family:monospace!important;margin-top:2px!important">{section_label}</div></div>'
+                f'<span style="font-size:11px!important;font-weight:700!important;padding:2px 8px!important;'
+                f'border-radius:99px!important;background:{_BG2}!important;color:{score_color}!important;'
+                f'white-space:nowrap!important;flex-shrink:0!important;margin-left:8px!important">'
+                f'CE {item["ce_score"]:.3f}</span></div>'
+                f'<div style="font-size:12px!important;color:{_TEXT3}!important;line-height:1.6!important;'
+                f'border-left:2px solid {_BORDER}!important;padding-left:10px!important">'
+                f'{body}…</div>'
+            )
 
-    if r.priority_chunk:
-        pchunk = r.priority_chunk["chunk"]
-        body = _extract_body(pchunk["raw_body"])
-        p_section_label = _clean_section(pchunk["section"])
-        rag_html += _card(
-            f'<div style="display:flex!important;justify-content:space-between!important;'
-            f'align-items:flex-start!important;margin-bottom:6px!important">'
-            f'<div><div style="font-size:13px!important;font-weight:600!important;'
-            f'color:#a5b4fc!important">Priority Rule</div>'
-            f'<div style="font-size:11px!important;color:{_TEXT4}!important;'
-            f'font-family:monospace!important;margin-top:2px!important">{p_section_label}</div></div>'
-            f'<span style="font-size:11px!important;font-weight:700!important;padding:2px 8px!important;'
-            f'border-radius:99px!important;background:{_BG2}!important;color:{_TEXT3}!important;'
-            f'white-space:nowrap!important;flex-shrink:0!important;margin-left:8px!important">'
-            f'CE {r.priority_chunk["ce_score"]:.3f}</span></div>'
-            f'<div style="font-size:12px!important;color:{_TEXT3}!important;line-height:1.6!important;'
-            f'border-left:2px solid rgba(165,180,252,.4)!important;padding-left:10px!important">'
-            f'{body}…</div>',
-            border_color="rgba(165,180,252,.3)", bg=_BG1
-        )
+        if r.priority_chunk:
+            pchunk = r.priority_chunk["chunk"]
+            body = _extract_body(pchunk["raw_body"])
+            p_section_label = _clean_section(pchunk["section"])
+            rag_html += _card(
+                f'<div style="display:flex!important;justify-content:space-between!important;'
+                f'align-items:flex-start!important;margin-bottom:6px!important">'
+                f'<div><div style="font-size:13px!important;font-weight:600!important;'
+                f'color:#a5b4fc!important">Priority Rule</div>'
+                f'<div style="font-size:11px!important;color:{_TEXT4}!important;'
+                f'font-family:monospace!important;margin-top:2px!important">{p_section_label}</div></div>'
+                f'<span style="font-size:11px!important;font-weight:700!important;padding:2px 8px!important;'
+                f'border-radius:99px!important;background:{_BG2}!important;color:{_TEXT3}!important;'
+                f'white-space:nowrap!important;flex-shrink:0!important;margin-left:8px!important">'
+                f'CE {r.priority_chunk["ce_score"]:.3f}</span></div>'
+                f'<div style="font-size:12px!important;color:{_TEXT3}!important;line-height:1.6!important;'
+                f'border-left:2px solid rgba(165,180,252,.4)!important;padding-left:10px!important">'
+                f'{body}…</div>',
+                border_color="rgba(165,180,252,.3)", bg=_BG1
+            )
 
-    dept_scores = {}
-    for item in r.rag_chunks:
-        d = item["chunk"]["dept"]
-        dept_scores[d] = dept_scores.get(d, 0.0) + item["ce_score"]
-    vote_html = ""
-    if dept_scores:
-        min_s = min(dept_scores.values())
-        shifted = {d: s - min_s for d, s in dept_scores.items()}
-        total = sum(shifted.values()) or 1.0
-        for label, score in sorted(shifted.items(), key=lambda x: -x[1]):
-            vote_html += _bar_row(label, score/total, _ACCENT)
+        dept_scores = {}
+        for item in r.rag_chunks:
+            d = item["chunk"]["dept"]
+            dept_scores[d] = dept_scores.get(d, 0.0) + item["ce_score"]
+        vote_html = ""
+        if dept_scores:
+            min_s = min(dept_scores.values())
+            shifted = {d: s - min_s for d, s in dept_scores.items()}
+            total = sum(shifted.values()) or 1.0
+            for label, score in sorted(shifted.items(), key=lambda x: -x[1]):
+                vote_html += _bar_row(label, score/total, _ACCENT)
+
+    rag_section = _section("Retrieved Evidence") + rag_html
+    vote_section = (_section("RAG Vote Breakdown") + vote_html) if vote_html else ""
 
     return _wrap(
         _section("Department Confidence") + dept_bars +
         _section("Priority Confidence") + prio_bars +
-        _section("Retrieved Evidence") + rag_html +
-        _section("RAG Vote Breakdown") + vote_html
+        rag_section + vote_section
     )
 
 
 def render_explanation_html(r):
+    rag_used = getattr(r, "rag_used", True)
+    priority_probs = getattr(r, "priority_probs", {})
+    priority_conf  = priority_probs.get(r.priority.lower(), 0.0)
+
     def mono(t):
         return (f'<span style="display:inline-block!important;font-family:{_MONO_STACK}!important;'
                 f'font-size:11px!important;background:{_BG2}!important;color:#a5b4fc!important;'
                 f'padding:2px 6px!important;border-radius:4px!important;margin:1px!important">{t}</span>')
 
-    top3_html = " ".join(mono(f'{x["dept"]} {x["prob"]:.1%}') for x in r.transformer_top3)
-    rag_top = (
-        mono(f'{r.rag_chunks[0]["chunk"]["dept"]} {r.rag_chunks[0]["ce_score"]:.3f}')
-        if r.rag_chunks else f'<span style="color:{_TEXT4}!important">no results</span>'
-    )
+    def note(t, color=_TEXT4):
+        return (f'<span style="font-size:10px!important;color:{color}!important;'
+                f'font-style:italic!important;margin-left:4px!important">{t}</span>')
 
-    rows = [
-        ("Stage 1", "Groq Rewrite", f'<span style="color:#4ade80!important">✅ cleaned</span>'),
-        ("Stage 2a", "Transformer top-3", top3_html),
-        ("Stage 2b", "RAG top chunk", rag_top),
-        ("Stage 3", "Final decision",
-         mono(r.department) + mono(r.priority) + mono(f"conf={r.confidence}")),
-    ]
+    top3_html = " ".join(mono(f'{x["dept"]} {x["prob"]:.1%}') for x in r.transformer_top3)
+
+    if rag_used:
+        dept_passed = r.transformer_conf >= 0.85
+        prio_passed = priority_conf >= 0.60
+        rag_top_chunk = r.rag_chunks[0] if r.rag_chunks else None
+        rag_top = (
+            mono(f'{rag_top_chunk["chunk"]["dept"]} CE={rag_top_chunk["ce_score"]:.3f}')
+            + note("→ dept source", "#4ade80")
+            if rag_top_chunk else
+            f'<span style="color:{_TEXT4}!important">skipped — dept was confident</span>'
+        )
+        dept_decided = (
+            mono(r.department) + note("transformer direct — dept confident, retrieval skipped", "#4ade80")
+            if dept_passed else
+            mono(r.department) + note("from CrossEncoder top chunk", "#4ade80")
+        )
+        prio_decided = (
+            mono(r.priority) + note("transformer direct — priority confident, LLM skipped", "#4ade80")
+            if prio_passed else
+            mono(r.priority) + mono(f"conf={r.confidence}") + note(f"LLM applied escalation criteria (priority {priority_conf*100:.1f}% < 60% threshold)", "#fb923c")
+        )
+        prio_chunk_val = (
+            mono(f'CE={r.priority_chunk["ce_score"]:.3f}') + note(f'section={r.priority_chunk["chunk"]["section"]}', "#fb923c")
+            if r.priority_chunk else
+            f'<span style="color:{_TEXT4}!important">skipped — priority was confident</span>'
+        )
+        rows = [
+            ("Stage 1",  "Groq rewrite",        f'<span style="color:#4ade80!important">✅ cleaned</span>'),
+            ("Stage 2a", "Transformer dept",     mono(f'{r.transformer_dept} {r.transformer_conf*100:.1f}%') + note("✓ confident — retrieval skipped" if dept_passed else "✗ uncertain — RAG triggered", "#4ade80" if dept_passed else "#f87171")),
+            ("Stage 2a", "Transformer priority", mono(f'{r.priority} {priority_conf*100:.1f}%') + note("✓ confident — LLM skipped" if prio_passed else "✗ uncertain — LLM needed", "#4ade80" if prio_passed else "#f87171")),
+            ("Stage 2b", "Dept RAG chunks",      rag_top),
+            ("Stage 2b", "Priority chunk",       prio_chunk_val),
+            ("Stage 3",  "Dept decision",        dept_decided),
+            ("Stage 3",  "Priority decision",    prio_decided),
+        ]
+    else:
+        rows = [
+            ("Stage 1",  "Groq rewrite",        f'<span style="color:#4ade80!important">✅ cleaned</span>'),
+            ("Stage 2a", "Transformer dept",     mono(f'{r.transformer_dept} {r.transformer_conf*100:.1f}%') + note("✓ confident — no RAG needed", "#4ade80")),
+            ("Stage 2a", "Transformer priority", mono(f'{r.priority} {priority_conf*100:.1f}%') + note("✓ confident — no LLM needed", "#4ade80")),
+            ("Stage 2b", "RAG",                  f'<span style="color:#4ade80!important">⚡ skipped — both thresholds met</span>'),
+            ("Stage 3",  "LLM",                  f'<span style="color:#4ade80!important">⚡ skipped — transformer used directly</span>'),
+        ]
 
     def th(t):
         return (f'<th style="text-align:left!important;font-size:11px!important;'
@@ -531,11 +653,10 @@ def render_explanation_html(r):
                 f'vertical-align:top!important;color:{_TEXT2}!important;font-size:13px!important">{t}</td>')
 
     table_rows = "".join(f'<tr>{td(mono(s))}{td(n)}{td(v)}</tr>' for s, n, v in rows)
-    # If Stage 1 returned raw JSON (parse fallback), extract structured_body
+
     def _extract_cleaned(text):
         import json as _json, re as _re
         t = text.strip()
-        # Strip markdown fences
         t = _re.sub(r"^```(?:json)?\s*", "", t, flags=_re.IGNORECASE).strip()
         t = _re.sub(r"\s*```$", "", t).strip()
         try:
@@ -584,21 +705,21 @@ def render_attribution_html(queue_html, prio_html, occl_rows):
             w = (f'<span style="font-family:{_MONO_STACK}!important;background:{_BG2}!important;'
                  f'color:#a5b4fc!important;padding:1px 6px!important;border-radius:4px!important">{word}</span>')
             return (
-                f'<tr>{td_o(w)}'
-                + td_o(f"-{qdrop:.1%}", "#f87171")
-                + td_o(f"{qnew:.1%}")
-                + td_o(f"-{pdrop:.1%}", "#f87171")
-                + td_o(f"{pnew:.1%}")
-                + "</tr>"
+                    f'<tr>{td_o(w)}'
+                    + td_o(f"-{qdrop:.1%}", "#f87171")
+                    + td_o(f"{qnew:.1%}")
+                    + td_o(f"-{pdrop:.1%}", "#f87171")
+                    + td_o(f"{pnew:.1%}")
+                    + "</tr>"
             )
         rows = "".join(_row(rep) for rep in occl_rows)
         occl = (
-            _section("Occlusion Check") +
-            f'<table style="width:100%!important;border-collapse:collapse!important;'
-            f'background:{_BG1}!important;border-radius:8px!important;overflow:hidden!important">'
-            f'<thead style="background:{_BG2}!important"><tr>'
-            f'{th("Word")}{th("Dept Δ")}{th("New dept")}{th("Prio Δ")}{th("New prio")}'
-            f'</tr></thead><tbody>{rows}</tbody></table>'
+                _section("Occlusion Check") +
+                f'<table style="width:100%!important;border-collapse:collapse!important;'
+                f'background:{_BG1}!important;border-radius:8px!important;overflow:hidden!important">'
+                f'<thead style="background:{_BG2}!important"><tr>'
+                f'{th("Word")}{th("Dept Δ")}{th("New dept")}{th("Prio Δ")}{th("New prio")}'
+                f'</tr></thead><tbody>{rows}</tbody></table>'
         )
     else:
         occl = (_section("Occlusion Check") +
@@ -608,10 +729,11 @@ def render_attribution_html(queue_html, prio_html, occl_rows):
 
 
 def render_sensitivity_html(r, support_words):
+    rag_used = getattr(r, "rag_used", True)
     runner_up = r.transformer_top3[1]["dept"] if len(r.transformer_top3) > 1 else r.department
     margin = (r.transformer_top3[0]["prob"] - r.transformer_top3[1]["prob"]
               if len(r.transformer_top3) > 1 else 1.0)
-    comp_kw = extract_competitor_kw(r.rag_chunks, runner_up)
+    comp_kw = extract_competitor_kw(r.rag_chunks, runner_up) if rag_used else []
 
     def pill(w, bg, color):
         return (f'<span style="display:inline-block!important;margin:3px 3px 3px 0!important;'
@@ -621,8 +743,15 @@ def render_sensitivity_html(r, support_words):
 
     support_pills = "".join(pill(w, "rgba(99,102,241,.25)", "#a5b4fc") for w in support_words) \
                     or f'<span style="color:{_TEXT4}!important;font-size:13px!important">None identified</span>'
-    comp_pills = "".join(pill(w, "rgba(251,191,36,.15)", "#fbbf24") for w in comp_kw[:5]) \
-                 or f'<span style="color:{_TEXT4}!important;font-size:13px!important">None found</span>'
+
+    if rag_used and comp_kw:
+        comp_pills = "".join(pill(w, "rgba(251,191,36,.15)", "#fbbf24") for w in comp_kw[:5])
+    else:
+        comp_pills = (
+            f'<span style="color:{_TEXT4}!important;font-size:13px!important">'
+            f'{"RAG not invoked — no competitor keywords available" if not rag_used else "None found"}'
+            f'</span>'
+        )
 
     def note(t):
         return f'<div style="font-size:11px!important;color:{_TEXT4}!important;margin-top:8px!important">{t}</div>'
@@ -647,7 +776,7 @@ def render_sensitivity_html(r, support_words):
     comp_box = (
         f'<div style="background:{_BG1}!important;border:1px solid {_BORDER}!important;'
         f'border-radius:8px!important;padding:14px!important;margin-bottom:10px!important">'
-        f'{comp_pills}{note("Heuristic probe — not prescriptive")}</div>'
+        f'{comp_pills}{note("Heuristic probe — not prescriptive" if rag_used else "Only available when RAG is invoked")}</div>'
     )
 
     return _wrap(
@@ -658,16 +787,48 @@ def render_sensitivity_html(r, support_words):
 
 
 def render_chat_reply(result):
-    agree = result.transformer_dept == result.department
-    agree_line = "\u2705 Transformer agrees." if agree else (
-        "\u26a0\ufe0f Transformer said **" + result.transformer_dept + "** \u2014 Groq overrides."
+    rag_used       = getattr(result, "rag_used", True)
+    rag_reason     = getattr(result, "rag_reason", "")
+    prio_emoji     = PE.get(result.priority.lower(), "\u26aa")
+    priority_probs = getattr(result, "priority_probs", {})
+    priority_conf  = priority_probs.get(result.priority.lower(), 0.0)
+
+    dept_tick = "\u2713" if result.transformer_conf >= 0.85 else "\u2717"
+    prio_tick = "\u2713" if priority_conf >= 0.60 else "\u2717"
+
+    conf_line = (
+        f"Dept: `{result.transformer_conf*100:.1f}%` {dept_tick}  \u00b7  "
+        f"Priority: `{priority_conf*100:.1f}%` {prio_tick}"
     )
-    prio_emoji = PE.get(result.priority.lower(), "\u26aa")
-    return (
-        "Ticket routed!\n\n"
-        f"\U0001f3e2 **Department:** {result.department}\n"
-        f"{prio_emoji} **Priority:** {result.priority.capitalize()}"
-        f"  \u00b7  Transformer: `{result.transformer_conf*100:.1f}%`\n\n"
-        f"{agree_line}\n\n"
-        f"_{result.reasoning}_"
-    )
+
+    if not rag_used:
+        body = (
+            "Ticket routed!\n\n"
+            f"\U0001f3e2 **Department:** {result.department}\n"
+            f"{prio_emoji} **Priority:** {result.priority.capitalize()}\n\n"
+            f"{conf_line}\n"
+            f"`{rag_reason}`\n\n"
+            f"\u26a1 **Fast path** — transformer confident on both dept and priority, RAG + LLM skipped.\n\n"
+            f"_{result.reasoning}_"
+        )
+    else:
+        agree     = result.transformer_dept == result.department
+        dept_line = (
+            f"\u2705 **Dept:** CrossEncoder top chunk agrees with transformer \u2192 `{result.department}`"
+            if agree else
+            f"\u26a0\ufe0f **Dept:** CrossEncoder top chunk overrides transformer "
+            f"(`{result.transformer_dept}` \u2192 `{result.department}`)"
+        )
+        body = (
+            "Ticket routed!\n\n"
+            f"\U0001f3e2 **Department:** {result.department}\n"
+            f"{prio_emoji} **Priority:** {result.priority.capitalize()}\n\n"
+            f"{conf_line}\n"
+            f"`{rag_reason}`\n\n"
+            f"\U0001f500 **Slow path** — RAG invoked:\n"
+            f"{dept_line}\n"
+            f"\U0001f3af **Priority:** transformer uncertain (`{priority_conf*100:.1f}%`) "
+            f"\u2014 LLM read escalation criteria \u2192 `{result.priority}` (conf: `{result.confidence}`)\n\n"
+            f"_{result.reasoning}_"
+        )
+    return body

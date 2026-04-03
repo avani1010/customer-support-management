@@ -20,92 +20,120 @@ VALID_DEPTS = [
 ]
 
 
-def build_generation_prompt(cleaned_text, transformer_result, retrieved_chunks, priority_chunk=None):
-    top3_lines = "\n".join(
-        f"  {i+1}. {r['dept']} — {r['prob']*100:.1f}%"
-        for i, r in enumerate(transformer_result["top3_dept"])
-    )
-    transformer_block = (
-        f"TRANSFORMER PREDICTION (fine-tuned DistilBERT):\n"
-        f"  Department : {transformer_result['dept']} ({transformer_result['dept_conf']*100:.1f}%)\n"
-        f"  Priority   : {transformer_result['priority']} ({transformer_result['priority_conf']*100:.1f}%)\n"
-        f"  Top-3 dept :\n{top3_lines}"
-    )
-
-    rag_lines = []
-    for i, r in enumerate(retrieved_chunks):
-        chunk = r["chunk"]
-        rag_lines.append(
-            f"[Chunk {i+1}] Department={chunk['dept']} | Section={chunk['section']} | CE={r['ce_score']:.3f}\n"
-            f"{chunk['raw_body'][:400]}..."
+def resolve_department_from_rag(retrieved_chunks, transformer_result):
+    """
+    Department resolution:
+    - If retrieved_chunks is non-empty (dept was uncertain), use CrossEncoder top chunk.
+    - If retrieved_chunks is empty (dept was confident, retrieval skipped), use transformer directly.
+    """
+    if not retrieved_chunks:
+        log.info(
+            f"Dept resolved from transformer directly (retrieval skipped): "
+            f"{transformer_result['dept']} ({transformer_result['dept_conf']*100:.1f}%)"
         )
-    rag_block = "\n\n".join(rag_lines)
+        return transformer_result["dept"], None
+
+    for item in retrieved_chunks:
+        dept = item["chunk"].get("dept", "")
+        if dept in VALID_DEPTS:
+            log.info(
+                f"Dept resolved from RAG top chunk: {dept} "
+                f"(CE={item['ce_score']:.3f}) — transformer was "
+                f"{transformer_result['dept']} ({transformer_result['dept_conf']*100:.1f}%)"
+            )
+            return dept, item["ce_score"]
+
+    log.warning("No valid dept in RAG chunks — falling back to transformer")
+    return transformer_result["dept"], None
+
+
+def build_priority_prompt(cleaned_text, transformer_result, priority_chunk):
+    """
+    Focused prompt: only asks the LLM to decide priority.
+    Gives it the ticket, the transformer's priority signal, and the
+    escalation criteria chunk to reason against.
+    """
+    transformer_prio_block = (
+            f"TRANSFORMER PRIORITY PREDICTION:\n"
+            f"  Predicted : {transformer_result['priority']} "
+            f"({transformer_result['priority_conf']*100:.1f}% confidence)\n"
+            f"  All probs : "
+            + "  ".join(
+        f"{k}: {v*100:.1f}%"
+        for k, v in sorted(
+            transformer_result["priority_probs"].items(),
+            key=lambda x: -x[1]
+        )
+    )
+    )
 
     if priority_chunk:
         pchunk = priority_chunk["chunk"]
-        priority_block = (
+        criteria_block = (
             f"Section={pchunk['section']} | CE={priority_chunk['ce_score']:.3f}\n"
-            f"{pchunk['raw_body'][:400]}..."
+            f"{pchunk['raw_body'][:600]}"
         )
     else:
-        priority_block = "No priority chunk retrieved."
+        criteria_block = "No priority criteria chunk retrieved."
 
-    return f"""You are an expert support ticket routing system.
-Assign every ticket to exactly one department and one priority level.
+    return f"""You are a support ticket priority classifier.
 
-You have three evidence sources:
-1. Transformer classifier — fast pattern-based prediction with confidence scores
-2. Dept compliance chunks — routing rules defining what each department handles
-3. Priority criteria chunk — universal escalation rules (HIGH / MEDIUM / LOW)
+Your only job is to assign the correct priority level (high, medium, or low) to this ticket.
 
-Where sources agree, that strengthens the decision.
-Where they disagree, reason about which is more specific to this ticket.
+You have two inputs:
+1. Transformer prediction — a fine-tuned model's priority signal from ticket language patterns
+2. Priority escalation criteria — the official rules defining what makes a ticket high/medium/low
 
-NOTE ON PRIORITY: The transformer has a dedicated priority head trained on real tickets.
-Trust its priority prediction unless the priority criteria chunk explicitly contradicts it.
+Apply the criteria to this specific ticket. If the criteria clearly match a different level
+than the transformer predicted, override it. If the criteria are ambiguous, trust the transformer.
 
 ---
 TICKET:
 {cleaned_text}
 
 ---
-SOURCE 1 — TRANSFORMER:
-{transformer_block}
+SOURCE 1 — TRANSFORMER PRIORITY SIGNAL:
+{transformer_prio_block}
 
 ---
-SOURCE 2 — DEPT ROUTING RULES:
-{rag_block}
+SOURCE 2 — PRIORITY ESCALATION CRITERIA:
+{criteria_block}
 
 ---
-SOURCE 3 — PRIORITY CRITERIA:
-{priority_block}
-
----
-VALID DEPARTMENTS (choose EXACTLY one):
-{chr(10).join(f"- {d}" for d in VALID_DEPTS)}
-
 VALID PRIORITIES: high, medium, low
 
----
 Respond in this EXACT JSON format and nothing else:
 {{
-  "department": "<exact department name from the list above>",
   "priority": "<high|medium|low>",
   "confidence": "<high|medium|low>",
-  "reasoning": "<2-3 sentences explaining why both transformer and compliance evidence support this decision>"
+  "reasoning": "<1-2 sentences citing which specific criteria justify this priority level>"
 }}"""
 
 
-def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_client, priority_chunk=None):
-    log.info(f"Stage 3 — transformer={transformer_result['dept']} ({transformer_result['dept_conf']*100:.1f}%)"
-             f" | RAG top={retrieved_chunks[0]['chunk']['dept']} (CE={retrieved_chunks[0]['ce_score']:.3f})")
+def generate_routing(cleaned_text, transformer_result, retrieved_chunks,
+                     groq_client, priority_chunk=None):
+    """
+    Stage 3 entry point.
 
-    prompt = build_generation_prompt(cleaned_text, transformer_result, retrieved_chunks, priority_chunk)
+    Department: resolved deterministically from CrossEncoder top chunk.
+    Priority  : resolved by LLM reasoning against escalation criteria.
+    """
+    # ── Department: CrossEncoder decides, no LLM needed ───────────────────
+    department, ce_score = resolve_department_from_rag(retrieved_chunks, transformer_result)
+
+    # ── Priority: LLM reasons against criteria chunk ───────────────────────
+    ce_str = f"{ce_score:.3f}" if ce_score is not None else "fallback"
+    log.info(
+        f"Stage 3 — dept from RAG: {department} (CE={ce_str}) "
+        f"| calling LLM for priority only"
+    )
+
+    prompt = build_priority_prompt(cleaned_text, transformer_result, priority_chunk)
     response = groq_client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.0,
-        max_tokens=400,
+        max_tokens=200,   # much smaller — only returning priority JSON now
     )
     raw = response.choices[0].message.content.strip()
     log.debug(f"Groq raw response: {raw[:200]!r}")
@@ -116,23 +144,27 @@ def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_cl
             raise ValueError("No JSON block found in response")
         result = json.loads(match.group())
 
-        if result.get("department") not in VALID_DEPTS:
-            log.warning(f"Invalid dept '{result.get('department')}' — falling back to transformer")
-            result["department"] = transformer_result["dept"]
-            result["reasoning"] = result.get("reasoning", "") + " [dept fallback to transformer]"
-
         if result.get("priority") not in ("high", "medium", "low"):
             log.warning(f"Invalid priority '{result.get('priority')}' — falling back to transformer")
-            result["priority"] = transformer_result["priority"]
+            result["priority"]  = transformer_result["priority"]
+            result["reasoning"] = result.get("reasoning", "") + " [priority fallback to transformer]"
 
-        log.info(f"Stage 3 done — dept={result['department']} priority={result['priority']} confidence={result['confidence']}")
-        return result
+        log.info(
+            f"Stage 3 done — dept={department} "
+            f"priority={result['priority']} confidence={result['confidence']}"
+        )
+        return {
+            "department": department,
+            "priority"  : result["priority"],
+            "confidence": result.get("confidence", "medium"),
+            "reasoning" : result.get("reasoning", ""),
+        }
 
     except Exception as e:
-        log.error(f"JSON parse failed: {e} — using transformer fallback")
+        log.error(f"JSON parse failed: {e} — using transformer fallback for priority")
         return {
-            "department": transformer_result["dept"],
-            "priority": transformer_result["priority"],
+            "department": department,
+            "priority"  : transformer_result["priority"],
             "confidence": "low",
-            "reasoning": "LLM parse failed — fallback to transformer prediction.",
+            "reasoning" : "LLM priority parse failed — fallback to transformer prediction.",
         }

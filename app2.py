@@ -12,6 +12,7 @@ if ROOT not in sys.path:
 
 load_dotenv(os.path.join(ROOT, "secrets.env"))
 HF_TOKEN   = os.getenv("HF_TOKEN")
+HF_TOKEN_AVANI = os.getenv("HF_TOKEN_AVANI")
 GROQ_TOKEN = os.getenv("GROQ_API_KEY")
 
 from pipeline.stage2a_transformer import load_transformer
@@ -31,8 +32,8 @@ groq_client = Groq(api_key=GROQ_TOKEN)
 model, tokenizer, queue_encoder, priority_encoder = load_transformer(
     "Nethra19/multitask-ticket-model", HF_TOKEN, device
 )
-faiss_index, bm25, all_chunks, cross_encoder, priority_index, priority_chunks = load_rag_artifacts(
-    "Rarry/Improved_RAG", HF_TOKEN
+retrieval_embedder, faiss_index, bm25, all_chunks, cross_encoder, priority_index, priority_chunks = load_rag_artifacts(
+    "avani1010/new_rag_index", HF_TOKEN_AVANI
 )
 
 queue_id_to_label    = {i: l for i, l in enumerate(queue_encoder.classes_)}
@@ -245,6 +246,7 @@ EXAMPLES = [
     "The checkout page keeps crashing when customers try to pay with Visa.",
     "Can you tell me your standard service hours and how to escalate?",
     "Our Salesforce CRM has been down since 9am, sales team is blocked.",
+    "URGENT: Our entire payment processing system has been down for 3 hours. We are losing thousands of dollars per minute and cannot process any customer transactions. This is a critical outage affecting all 500 of our enterprise clients. We need immediate escalation to your senior technical team. Our SLA breach deadline is in 2 hours."
 ]
 
 
@@ -392,6 +394,7 @@ with gr.Blocks(css=CSS, title="Support Ticket Router") as demo:
             result = route_ticket(
                 user_message.strip(), groq_client,
                 model, tokenizer, queue_encoder, priority_encoder, device,
+                retrieval_embedder,
                 faiss_index, bm25, all_chunks, cross_encoder,
                 priority_index, priority_chunks
             )
