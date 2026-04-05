@@ -1,34 +1,94 @@
-
 DEPARTMENT: Service Outages and Maintenance
 ROUTING SCOPE AND PRIORITY GUIDANCE
 =====================================
- 
+
 OVERVIEW
 --------
-The Service Outages and Maintenance department handles incidents and 
-communications related to infrastructure-level service disruptions that affect 
-multiple customers or a significant portion of users simultaneously, as well as 
-planned maintenance windows that may impact availability. Unlike IT Support — 
-which handles technical problems affecting individual users or teams — this 
-department deals with systemic issues: the platform is down for everyone, a 
-region is experiencing degraded performance, or a scheduled maintenance window 
-needs to be communicated. A ticket belongs here when the scope of impact goes 
-beyond a single user and the likely cause is infrastructure or platform-level.
- 
+The Service Outages and Maintenance department handles incidents and
+communications related to infrastructure-level service disruptions affecting
+multiple users or systems simultaneously, as well as planned maintenance
+windows and digital platform overhaul requests.
+
+In the training data, this queue is heavily weighted toward HIGH priority
+tickets (approx. 70% high). It receives tickets about: system-wide outages
+affecting multiple products, digital marketing platform disruptions caused by
+infrastructure changes, service interruptions impacting marketing agency tools,
+data analytics platform failures at scale, and planned infrastructure updates.
+Unlike IT Support — which handles technical problems affecting individual users
+or teams — this department deals with systemic issues where the scope of impact
+goes beyond a single user.
+
+Key ticket types: Incident (service outages, system failures), Change (planned
+infrastructure updates, digital strategy overhauls), Request (information on
+upcoming maintenance, feature roadmap), Problem (recurring multi-user platform
+degradation).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Tech Support, IT, Outage, Disruption, Performance, Network, Feedback,
+Documentation, Maintenance, Recovery, Security, Technical, Bug, Feature,
+Resolution.
+
 REPRESENTATIVE EXAMPLES
 -----------------------
-  - "Conducted an analysis on the sudden service disruption"
-  - "We need to encrypt medical data across all systems to maintain confidentiality and security. Please provide details on the specific systems that need encryption. Afterward, we can schedule a call to review the implementa..."
-  - "Encountered unexpected downtime on various products, such as Twitch Studio Beta and MATLAB. The outage may be due to recent software updates or network issues. So far, restarting affected applications and checking server..."
-  - "Hello Customer Support, I am contacting you to report a network issue that is preventing access to essential medical data. It might be due to a malfunctioning TP-Link switch or a Wireless Adapter. I have already tried to..."
-  - "Noted intermittent service outages impacting various applications, possibly linked to recent updates or server overload. Services were restarted and server load is now being monitored."
-  - "A marketing agency encountered multiple disruptions in their service, which impacted the digital tools vital for brand development. The suspected cause is conflicts arising from recent system updates affecting integratio..."
- 
+  - "Experiencing Service Outage Due to Potential Infrastructure Overload:
+    There is a service outage possibly caused by infrastructure overload. The
+    affected servers were restarted by the team, but the problem persists." [high|Incident]
+
+  - "Urgent Improvement of Digital Strategy: Requesting improvements to our
+    digital strategies as a result of persistent service outages impacting our
+    core marketing tools. These outages have caused substantial disruptions
+    to our operations, leading to missed deadlines and lost opportunities." [high|Change]
+
+  - "Service Interruptions Affecting Marketing Agency Systems: The marketing
+    agency is facing service interruptions impacting several digital tools and
+    hardware. The issue appears to be linked to recent infrastructure updates." [high|Incident]
+
+  - "Trouble with Digital Marketing Campaigns: Our digital marketing campaigns
+    have ceased to generate leads and engagement, possibly due to recent changes
+    in the platform's algorithm affecting multiple users." [high|Incident]
+
+  - "Enhancement of Data Analytics Update: Updating the data analytics
+    infrastructure is anticipated to enhance investment optimization across
+    various products. This update is expected to improve performance broadly." [high|Change]
+
+  - "Sudden Disruption of Multiple Product Connections: An update to the
+    network configuration led to routing conflicts, impacting Switch, Android,
+    and other devices across the organisation." [medium|Incident]
+
+  - "Problem with Digital Platforms: Currently encountering service disruptions
+    on essential digital platforms. Recent configuration changes could be the
+    cause. Restart attempts have not resolved the issue." [high|Problem]
+
+  - "Issue Reported Concerning the Investments Optimization Tool: I am
+    addressing a problem with the investments optimization tool affecting
+    multiple users on the platform. The tool is experiencing intermittent
+    failures." [low|Incident]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: A business-critical system is completely unavailable with no workaround;
+multiple users or the entire organisation is blocked from working; service
+outage is actively causing revenue loss or operational disruption; infrastructure
+update is urgently required due to security or compliance risk; outage is
+impacting marketing tools during an active campaign launch.
+
+MEDIUM: Service is degraded but partially functional for some users; a planned
+maintenance event needs coordination; disruption is limited to specific regions
+or product lines; an infrastructure change is scheduled and needs communication.
+
+LOW: Single-user impact that might indicate a wider issue (monitor but do not
+escalate yet); post-incident review request once service is fully restored;
+informational request about upcoming maintenance windows; minor degradation
+with a workaround in place.
+
 ROUTING DECISION GUIDANCE
 --------------------------
-Route to Service Outages and Maintenance when: multiple users are affected by 
-the same issue simultaneously, the issue appears to be platform or 
-infrastructure-level rather than user-specific, or the ticket is about a 
-planned maintenance event. If only one user is affected and the cause is 
-likely user-specific (e.g., their VPN config, their device), route to IT Support 
-instead.
+Route to Service Outages and Maintenance when: multiple users are affected by
+the same issue simultaneously; the issue appears to be platform- or
+infrastructure-level rather than user-specific; a planned maintenance event
+needs to be communicated or coordinated; or a digital strategy overhaul is
+required in response to a systemic service failure.
+
+If only one user is affected and the cause is likely user-specific (e.g., their
+VPN config, their device, their account), route to IT Support instead.

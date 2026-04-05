@@ -1,41 +1,97 @@
-
 DEPARTMENT: Sales and Pre-Sales
 ROUTING SCOPE AND PRIORITY GUIDANCE
 =====================================
- 
+
 OVERVIEW
 --------
-The Sales and Pre-Sales department handles all inbound enquiries from prospective 
-customers who are evaluating the product or service before purchase, as well as 
-existing customers exploring upgrades, additional licences, or new product lines. 
-This department's goal is to convert interest into a transaction and to ensure 
-that existing customers are aware of the full value available to them. Tickets 
-here are characterised by the absence of any problem — the customer is not broken 
-or blocked, they are exploring options. The tone of these tickets is typically 
-enquiring rather than frustrated.
- 
+The Sales and Pre-Sales department handles all inbound enquiries from
+prospective customers evaluating the product or service before purchase, as
+well as existing customers exploring upgrades, additional licences, or new
+product lines. This department's goal is to convert interest into a
+transaction and to ensure existing customers are aware of the full value
+available to them.
+
+In the training data this queue is characterised by requests for digital
+marketing strategies, brand growth guidance, pricing information, service
+offering details, and sales documentation updates. Tickets here are typically
+enquiring rather than frustrated — the customer is exploring options, not
+reporting a broken system.
+
+Key ticket types: Request (information on services, digital strategies,
+integration capabilities, pricing), Change (updates to sales or marketing
+materials, brand strategy updates), Incident (occasionally, a sales tool
+or campaign metric tracking issue), Problem (decline in engagement metrics
+or brand visibility attributed to strategic rather than technical causes).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Feedback, IT, Tech Support, Feature, Documentation, Product, Performance,
+Sales, Security, Bug, Guidance, Technical, Marketing, Customer, Strategy,
+Growth, Digital, Lead.
+
 REPRESENTATIVE EXAMPLES
 -----------------------
-  - "Could you provide more information on how the NAS-System improves data analytics investment optimization? I am particularly interested in its features and benefits."
-  - "Could you provide more information on how the Rode NT-USB Mini can be integrated into hospital systems for securing medical data?"
-  - "Customer support reports that a financial organization is encountering integration problems impacting data analytics functionalities across various products. These issues appear to have begun following recent updates, po..."
-  - "Noted unauthorized access attempts on the medical data server. The security protocols might be outdated or misconfigured. We have initiated an update of the antivirus software and a review of the firewall. We require you..."
-  - "Could you provide more details on the solutions offered for securing medical data?"
-  - "Hello, could you offer insights on effective strategies to enhance brand growth, utilizing Oracle Database 19c and Microsoft Azure?"
- 
+  - "Brand Growth Services Inquiry: Could you share comprehensive digital
+    marketing strategies that can help improve brand development for our
+    agency?" [medium|Request]
+
+  - "Inquiry About Data Analytics Services for Investment Portfolio
+    Optimization: I am writing to seek detailed information about your
+    company's data analytics services for investment portfolio management." [medium|Request]
+
+  - "SAP ERP Integration Details: Could you provide comprehensive details on
+    the integration capabilities of SAP ERP for our Outlook project management?
+    This would assist us in planning our purchase decision." [medium|Request]
+
+  - "Elasticsearch Brand Expansion Tactics: I am seeking insights to enhance
+    brand expansion using Elasticsearch. Could you provide strategies to
+    optimize search and improve customer experience?" [medium|Request]
+
+  - "Strategies for Expanding Digital Brand Influence and Innovating Products:
+    Our company requires tailored digital strategies to enhance brand expansion
+    and product innovation. Could you provide guidance?" [high|Request]
+
+  - "Marketing Strategy Update: I would like to request an update on the
+    marketing strategy for our various products to enhance brand growth
+    and sales performance." [high|Change]
+
+  - "Enhance Clarity of Pricing Model Information: Request to update pricing
+    model options on the website to improve clarity for customers, which would
+    assist them in making purchase decisions." [medium|Change]
+
+  - "Revise Sales Documentation: Updating sales documents can boost client
+    interaction and improve conversion rates." [low|Change]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: A deal is closing imminently and the customer is at risk of going to a
+competitor; an enterprise prospect requires an urgent quote or contract review;
+a high-value brand strategy request with a stated deadline; marketing materials
+urgently needed for an active campaign launch.
+
+MEDIUM: An active prospect is evaluating the product and has requested
+information; an existing customer is exploring an upgrade; brand strategy or
+digital marketing guidance is needed for a current project with a moderate
+timeline.
+
+LOW: Early-stage exploratory inquiries with no stated deadline; requests to
+update marketing materials with no urgency; general information requests about
+service offerings; documentation updates for future reference.
+
 ROUTING DECISION GUIDANCE
 --------------------------
-Route to Sales and Pre-Sales when: there is no problem to solve — the customer 
-is asking about purchasing, upgrading, trialling, or evaluating. If an existing 
-customer has a billing problem with their current subscription, route to Billing 
-instead. If they have a technical problem with a product they already own, route 
-to IT Support.
- 
+Route to Sales and Pre-Sales when: there is no problem to solve — the customer
+is asking about purchasing, upgrading, trialling, evaluating, or improving
+their brand/sales strategy. If an existing customer has a billing problem with
+their current subscription, route to Billing instead. If they have a technical
+problem with a product they already own, route to IT Support.
+
 KEY SIGNALS FOR ROUTING TO SALES AND PRE-SALES
 -----------------------------------------------
 The following vocabulary strongly indicates a Sales or Pre-Sales ticket:
-"pricing", "quote", "enterprise plan", "trial", "demo", "upgrade plan", 
-"before we sign", "contract renewal", "volume discount", "licence count",
-"procurement", "purchase decision", "free trial", "subscription upgrade",
-"sales team", "account executive", "bulk pricing", "annual plan".
-If these terms appear and the customer has no active problem, route here.
+"brand growth", "digital strategy", "marketing campaign", "pricing", "quote",
+"trial", "demo", "upgrade", "before we sign", "contract renewal", "volume
+discount", "purchase decision", "free trial", "subscription upgrade",
+"sales team", "bulk pricing", "annual plan", "integration capabilities"
+(in a pre-purchase context), "service offerings", "expand our brand".
+If these terms appear and the customer has no active broken system, route here.

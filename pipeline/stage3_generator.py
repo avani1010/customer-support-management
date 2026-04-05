@@ -102,7 +102,7 @@ def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_cl
 
     prompt = build_generation_prompt(cleaned_text, transformer_result, retrieved_chunks, priority_chunk)
     response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="llama-3.1-8b-instant",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.0,
         max_tokens=400,

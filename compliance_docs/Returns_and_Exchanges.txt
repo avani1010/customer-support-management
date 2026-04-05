@@ -1,32 +1,91 @@
-
 DEPARTMENT: Returns and Exchanges
 ROUTING SCOPE AND PRIORITY GUIDANCE
 =====================================
- 
+
 OVERVIEW
 --------
-The Returns and Exchanges department manages the physical lifecycle of product 
-returns, replacements, and exchanges. This includes initiating return requests, 
-tracking the status of items in transit back to the company, processing 
-replacements for defective or incorrect items, confirming refund timelines after 
-a return has been received, and resolving disputes where a return was submitted 
-but acknowledgement has not been received. This department is distinct from 
-Billing and Payments: a customer requesting a refund before sending an item back 
-goes to Billing; a customer who has already sent an item back and is waiting for 
-their refund comes here.
- 
+The Returns and Exchanges department manages the physical and transactional
+lifecycle of product returns, replacements, and exchanges. This includes
+initiating return requests, tracking items in transit, processing replacements
+for defective or incorrect items, confirming refund timelines post-return, and
+resolving disputes where a return was submitted but acknowledgement has not
+been received.
+
+Important nuance from training data: this queue receives a broader range of
+tickets than the name suggests. It handles product-related performance
+complaints, integration failures within project or data management tools,
+digital campaign performance issues, and security incident reports — all
+framed around a specific product or deliverable that is not meeting
+expectations. The connecting thread is that the customer received something
+(a product, a service, a feature) that is not working as expected and they
+want it corrected or replaced.
+
+Key ticket types: Incident (product malfunctions, synchronization failures,
+security breaches affecting a product), Problem (data analytics failures,
+investment calculation errors, integration breakdowns), Request (information
+on product features, integration options), Change (marketing plan updates).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Tech Support, Feedback, Performance, IT, Documentation, Bug, Security,
+Feature, Sales, Product, Technical, Guidance, Marketing, Resolution, Disruption.
+
 REPRESENTATIVE EXAMPLES
 -----------------------
-  - "eager to explore integration possibilities within the PrestaShop project management SaaS. Would appreciate detailed information on how the two systems can operate together smoothly. Specifically, I am interested in under..."
-  - "I am keen to learn about integrating Google Cloud Platform project management SaaS solutions. Could you provide details on the available options to enhance our workflow? I would greatly appreciate any information you can..."
-  - "There were problems syncing project timelines, which could be because of errors in the integration with QuickBooks. We have already attempted to restart and reconnect the relevant applications, but the issue still exists..."
-  - "Customer Support, seeking information on integrating SAP ERP project management SaaS. Would appreciate details on the benefits, necessary requirements, and steps involved in the integration process. Specifically, interes..."
-  - "I am contacting you to learn more about digital approaches that can enhance brand growth for our products. Could you share any insights or suggestions on how to efficiently promote and expand our brand through digital ch..."
-  - "Assistance needed for security violation"
- 
+  - "Incomplete Product Bundle Received From Your Company: I recently found
+    that my product bundle was incomplete upon opening. Despite attempts to
+    resolve, the missing items have not been addressed." [medium|Incident]
+
+  - "Project Management System Data Synchronization Problem: The project
+    management SaaS has encountered data synchronization failures across
+    various integrations, potentially due to configuration errors." [high|Incident]
+
+  - "Technical Assistance for Financial Data Analytics Tool Malfunction: The
+    Financial Data Analytics Tool is not optimizing investment returns due to
+    a system glitch and incorrect data inputs." [medium|Incident]
+
+  - "Problem with Investment Calculations: A financial company encountered
+    inconsistencies in investment return calculations using H2O.ai SQL Server
+    analytics. The issue might be due to data integrity problems." [low|Problem]
+
+  - "Challenge with Campaign Engagement: The agency's recent digital campaign
+    has seen lower engagement than anticipated. It might be due to a misaligned
+    target audience or ineffective content strategy." [medium|Problem]
+
+  - "Request for Details on Project Management Features: I am inquiring about
+    the features of the SaaS project management platform, specifically regarding
+    integration options." [medium|Request]
+
+  - "Modify marketing plan: Seeking to update the marketing plan to boost brand
+    exposure across product lines." [low|Change]
+
+  - "Problem with Synchronization of Data Across Devices: Customers encounter
+    delays in data synchronization even after restarting servers and clearing
+    caches." [high|Problem]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: Return window is about to expire and the customer has not received a
+shipping label; product failure causing significant business disruption;
+data synchronization failure affecting multiple users or systems with no
+workaround; confirmed product defect with revenue impact.
+
+MEDIUM: Single product malfunctioning but workaround exists; exchange in
+progress but not time-critical; integration failure affecting one workflow;
+digital campaign underperforming but not causing immediate financial loss.
+
+LOW: General questions about return processes or product features; minor
+product issues with workarounds; marketing plan update requests with no
+deadline pressure; informational requests about integration options.
+
 ROUTING DECISION GUIDANCE
 --------------------------
-Route to Returns and Exchanges when: the customer has a physical product they 
-want to send back, has already sent one back, or is asking about the process 
-of doing so. Route to Billing and Payments if the conversation is only about 
-a refund amount or payment dispute with no physical product return involved.
+Route to Returns and Exchanges when: the customer has a physical product they
+want to send back; has already sent one back and is tracking a refund; is
+reporting that a delivered product or service did not meet specifications; or
+is requesting a replacement or correction of a specific product or deliverable.
+
+Route to Billing and Payments if the conversation is only about a refund amount
+or payment dispute with no physical product or deliverable return involved.
+Route to IT Support if the issue is a pure technical failure with no product
+return dimension.

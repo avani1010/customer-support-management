@@ -32,7 +32,7 @@ model, tokenizer, queue_encoder, priority_encoder = load_transformer(
     "Nethra19/multitask-ticket-model", HF_TOKEN, device
 )
 faiss_index, bm25, all_chunks, cross_encoder, priority_index, priority_chunks = load_rag_artifacts(
-    "Rarry/Improved_RAG", HF_TOKEN
+    "avani1010/new_index", HF_TOKEN
 )
 
 queue_id_to_label    = {i: l for i, l in enumerate(queue_encoder.classes_)}
