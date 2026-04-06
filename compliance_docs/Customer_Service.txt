@@ -1,0 +1,89 @@
+DEPARTMENT: Customer Service
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+
+OVERVIEW
+--------
+The Customer Service department is the primary point of contact for general
+relationship management, complaints about service quality, requests for
+guidance that span multiple departments, and situations where the customer
+has had a poor experience and needs reassurance. In the training data this
+queue frequently receives tickets that are technically adjacent (e.g., slow
+platform performance, analytics tool malfunctions, login issues, data
+inconsistencies) but where the customer's framing is a request for support,
+advice, or escalation rather than a direct technical fault report.
+
+This department handles the human side of support: dissatisfied customers,
+escalations where the customer feels unheard, follow-ups on unresolved
+tickets, and broad advisory requests (e.g., "how should I approach X?",
+"can you provide guidance on Y?"). It also acts as a catch-all when no
+other department clearly owns the ticket.
+
+Key ticket types in this queue: Request (guidance, integration advice,
+analytics assistance), Incident (platform problems framed as support
+requests), Problem (data inconsistencies, forecast inaccuracies reported
+for advisory help), Change (strategy improvement requests).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Tech Support, IT, Feedback, Documentation, Performance, Feature, Security,
+Bug, Guidance, Resolution, Product, Integration, Sales.
+
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Request for Support with PostgreSQL Integration: I would appreciate
+    assistance integrating PostgreSQL 13 with data analytics tools for
+    investment portfolio optimization." [medium|Request]
+
+  - "Inquiry on Data Analytics Tools: I am reaching out to inquire about
+    data analytics tools that can optimize investment strategies. Could you
+    provide information on available solutions?" [low|Request]
+
+  - "Problem with Investment Optimization: Noticing inaccuracies in the
+    investment optimization results due to outdated algorithms and data
+    inconsistencies." [medium|Problem]
+
+  - "Intermittent Access Problems on SaaS Platform: Currently facing sporadic
+    connectivity difficulties with the cloud-native SaaS system. The suspected
+    reason appears to be linked to orchestration resource constraints." [medium|Incident]
+
+  - "IBM SPSS Support Assistance: Seeking guidance on utilizing IBM SPSS
+    Statistics 28 for investment data analysis. Would be grateful for any
+    resources or tutorials that could be shared." [medium|Request]
+
+  - "Today's Problem with Data Sync: Faced data synchronization problems during
+    the usual update process, likely caused by server overload or software
+    conflicts. After restarting, the issue persists." [high|Incident]
+
+  - "Strategies for Growing Digital Brand Presence: I am reaching out to inquire
+    about the digital strategies your company employs to boost brand growth and
+    improve online visibility." [medium|Request]
+
+  - "Problem Reports: Facing data inconsistencies in investment analytics reports
+    caused by software integration problems or incorrect data inputs." [medium|Problem]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: Multiple users or the whole organisation blocked; active data
+synchronization failure affecting critical operations; customer explicitly
+escalating an unresolved high-impact issue.
+
+MEDIUM: Single user affected by a platform issue framed as a support request;
+customer seeking guidance on an ongoing but non-critical problem; request for
+integration advice where the customer has a specific active project.
+
+LOW: General informational requests about tools or strategies; early-stage
+advisory questions with no active problem; routine follow-up on previously
+logged tickets; minor feedback submissions.
+
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Customer Service when: the customer is expressing dissatisfaction with
+how they were treated; requesting an escalation; following up on an unresolved
+issue without introducing a new specific technical problem; asking for broad
+guidance or advice across multiple products; or when no other department clearly
+owns the ticket.
+
+Do NOT route here if the issue has a clear technical root cause requiring
+diagnosis (IT Support), involves a billing error (Billing and Payments), or is
+a direct pre-purchase inquiry (Sales and Pre-Sales).

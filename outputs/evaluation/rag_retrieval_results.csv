@@ -1,0 +1,234 @@
+true_dept,true_priority,top1_dept,recall_at_1,recall_at_4,mrr,top_ce_score,prio_section,prio_ce_score,prio_correct
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.6962769201290266,medium,0.5487835459173785,1
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.7207526530240955,medium,0.6284185707800751,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5011749788444829,high,0.500022937563683,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.514248151235372,medium,0.5028062943455495,1
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.7058508199699784,high,0.5303928177418284,1
+Billing and Payments,medium,Customer Service,0,0,0.0,0.6753617595172906,high,0.6545520380508234,0
+Billing and Payments,medium,General Inquiry,0,0,0.0,0.7059766377493045,medium,0.5095301945904794,1
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.6130540942367322,medium,0.6986821144461997,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.651683399339357,medium,0.6224708171295906,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.656730430886162,medium,0.6924069042232764,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5083976323024496,medium,0.5066157257296336,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.6880231490981508,medium,0.6078911002763732,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.6860375577551826,high,0.5897416594013692,0
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.510588787331118,medium,0.5001805448767958,0
+Billing and Payments,medium,Service Outages and Maintenance,0,1,0.5,0.5815070329425173,medium,0.5122878074932223,1
+Billing and Payments,medium,Customer Service,0,1,0.3333333333333333,0.714425782504747,medium,0.6281023778289594,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5878341715548305,medium,0.541507935680493,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.6553110019576684,medium,0.6025012678230477,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5010543670010849,high,0.500265649174723,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5123667635645919,high,0.502455247621991,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.7091135172507272,medium,0.6614326365684355,1
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.5840384100084697,medium,0.5738840262849545,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5798695433925612,medium,0.5544126528924479,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5795414802493521,high,0.5222899839354508,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.7004584438259489,medium,0.525979007947469,1
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.512747181074815,medium,0.5054571645462045,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5579476244799763,low,0.5696002545001715,0
+Billing and Payments,high,Billing and Payments,1,1,1.0,0.6609978015145855,medium,0.6934136049473084,0
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.6920807481208565,medium,0.627987895442924,1
+Billing and Payments,medium,Billing and Payments,1,1,1.0,0.5091309555622288,medium,0.5003471451370116,1
+Customer Service,medium,Returns and Exchanges,0,1,0.5,0.7239841567597219,low,0.5746868765454138,0
+Customer Service,high,Technical & IT Support,0,1,0.3333333333333333,0.5537681137317598,high,0.5096108790205031,1
+Customer Service,medium,Returns and Exchanges,0,1,0.5,0.6935856559079785,medium,0.504065661955143,1
+Customer Service,medium,Customer Service,1,1,1.0,0.5020507796685247,medium,0.5009961744860826,1
+Customer Service,medium,Human Resources,0,1,0.5,0.5316848697288968,medium,0.7265907016264654,1
+Customer Service,medium,Customer Service,1,1,1.0,0.7203098865338475,low,0.5108975122731018,0
+Customer Service,medium,Customer Service,1,1,1.0,0.6321557503059789,medium,0.5539552397431141,1
+Customer Service,high,Customer Service,1,1,1.0,0.665650576351578,medium,0.5133330190899283,0
+Customer Service,medium,Service Outages and Maintenance,0,0,0.0,0.7118244114462075,medium,0.5762640369372666,1
+Customer Service,medium,Returns and Exchanges,0,1,0.25,0.5212108039895579,high,0.5077878843689444,0
+Customer Service,medium,Customer Service,1,1,1.0,0.5056859644136458,medium,0.5002320254549774,1
+Customer Service,high,Technical & IT Support,0,0,0.0,0.510611735045134,high,0.5801843537579112,1
+Customer Service,medium,Customer Service,1,1,1.0,0.6613253116776165,medium,0.5349732618071479,1
+Customer Service,medium,Customer Service,1,1,1.0,0.7085704920069503,low,0.5072475456748848,0
+Customer Service,medium,Service Outages and Maintenance,0,1,0.5,0.5078583891782658,low,0.5058948744173712,0
+Customer Service,medium,Customer Service,1,1,1.0,0.5010689828788415,medium,0.5000966254144055,1
+Customer Service,medium,Returns and Exchanges,0,0,0.0,0.632169762813705,medium,0.5406578139083849,1
+Customer Service,medium,Returns and Exchanges,0,1,0.5,0.5403182005147956,medium,0.5066437508170932,1
+Customer Service,high,Customer Service,1,1,1.0,0.719040669884725,low,0.5265349936170266,0
+Customer Service,medium,Human Resources,0,1,0.5,0.6522361301425805,low,0.5236753017125712,0
+Customer Service,medium,Human Resources,0,1,0.25,0.5421798508082519,medium,0.5898551705548479,1
+Customer Service,medium,Human Resources,0,1,0.3333333333333333,0.5577365846610522,medium,0.5017906037677023,1
+Customer Service,high,Customer Service,1,1,1.0,0.5008645755702379,high,0.5373784180497243,1
+Customer Service,medium,Customer Service,1,1,1.0,0.5019639687655312,medium,0.5006207905546661,1
+Customer Service,medium,Human Resources,0,0,0.0,0.7024190102344231,medium,0.5461448251424743,1
+Customer Service,medium,Customer Service,1,1,1.0,0.5096073534045468,low,0.5047319394556151,0
+Customer Service,medium,Returns and Exchanges,0,1,0.5,0.7296712829266325,low,0.560865885586346,0
+Customer Service,medium,Customer Service,1,1,1.0,0.5016092318425038,low,0.5001137119014352,0
+Customer Service,medium,Customer Service,1,1,1.0,0.6705391798325929,medium,0.6632903822952704,1
+Customer Service,medium,Customer Service,1,1,1.0,0.6419438691166158,medium,0.5006722055865862,1
+General Inquiry,medium,Customer Service,0,0,0.0,0.7277715101488254,low,0.5272409319423893,0
+General Inquiry,medium,Customer Service,0,0,0.0,0.7235888985752359,low,0.532412037840027,0
+General Inquiry,medium,Customer Service,0,0,0.0,0.6607010973099652,low,0.5008341042387231,0
+General Inquiry,medium,Returns and Exchanges,0,0,0.0,0.6185911160481776,medium,0.5008284918715717,1
+General Inquiry,medium,Customer Service,0,1,0.3333333333333333,0.603144011759117,low,0.5019079393768426,0
+General Inquiry,medium,Customer Service,0,1,0.25,0.7305285509107065,low,0.6320127434427595,0
+General Inquiry,medium,General Inquiry,1,1,1.0,0.5008289747610002,high,0.5000199077894544,0
+General Inquiry,medium,Customer Service,0,0,0.0,0.5703870520833331,medium,0.5006579900785845,1
+General Inquiry,medium,Returns and Exchanges,0,0,0.0,0.6524857038841494,medium,0.5053041966988174,1
+General Inquiry,medium,Returns and Exchanges,0,0,0.0,0.5060498509205842,high,0.500238954711674,0
+General Inquiry,medium,Human Resources,0,1,0.5,0.5091214573747039,high,0.50172744481362,0
+General Inquiry,high,Sales and Pre-Sales,0,0,0.0,0.620156104540324,high,0.5076250435930278,1
+General Inquiry,medium,Service Outages and Maintenance,0,0,0.0,0.6891106213277349,high,0.5255226461175541,0
+General Inquiry,medium,General Inquiry,1,1,1.0,0.5036373772661038,medium,0.5006051141491971,1
+General Inquiry,medium,Returns and Exchanges,0,0,0.0,0.6340310007453431,high,0.5007017085494818,0
+General Inquiry,medium,Technical & IT Support,0,0,0.0,0.5083513566931553,medium,0.509863772186713,1
+General Inquiry,medium,Returns and Exchanges,0,0,0.0,0.7127962893865579,low,0.5406522925219309,0
+General Inquiry,high,General Inquiry,1,1,1.0,0.722539218788456,high,0.5024115344712374,1
+General Inquiry,medium,Sales and Pre-Sales,0,0,0.0,0.6178725458223309,low,0.5001238764791317,0
+General Inquiry,medium,Customer Service,0,0,0.0,0.6443985181636454,medium,0.5050015289970206,1
+General Inquiry,high,General Inquiry,1,1,1.0,0.6345790365383736,high,0.5238636485892522,1
+General Inquiry,high,Human Resources,0,1,0.5,0.5374008189115999,high,0.6202474064372443,1
+General Inquiry,medium,Sales and Pre-Sales,0,0,0.0,0.7014362124085595,medium,0.5000912586755346,1
+General Inquiry,medium,Customer Service,0,1,0.25,0.7209964890844468,low,0.5138755790698109,0
+General Inquiry,medium,Customer Service,0,0,0.0,0.6160863212451225,high,0.5006470809337724,0
+General Inquiry,high,Technical & IT Support,0,0,0.0,0.6448503987011531,high,0.6695922627886096,1
+General Inquiry,high,General Inquiry,1,1,1.0,0.5120986240995259,high,0.50045543590887,1
+General Inquiry,medium,Customer Service,0,0,0.0,0.7276312334618598,low,0.7175201148625378,0
+General Inquiry,medium,Sales and Pre-Sales,0,0,0.0,0.5260731491789362,high,0.5035957754007356,0
+General Inquiry,medium,Sales and Pre-Sales,0,0,0.0,0.5748681955508397,high,0.5000751452020067,0
+Human Resources,medium,Human Resources,1,1,1.0,0.6704786980256603,low,0.6632786011818457,0
+Human Resources,medium,Human Resources,1,1,1.0,0.5246285085195573,high,0.5004696051257062,0
+Human Resources,high,Technical & IT Support,0,1,0.25,0.5874668799382139,high,0.710652092544168,1
+Human Resources,high,Human Resources,1,1,1.0,0.5058584717190444,high,0.5037951196932835,1
+Human Resources,medium,Service Outages and Maintenance,0,0,0.0,0.5005658366048099,high,0.5002383001521242,0
+Human Resources,medium,Customer Service,0,0,0.0,0.7159481575897039,medium,0.6140348973334848,1
+Human Resources,medium,Customer Service,0,0,0.0,0.5005602066505698,medium,0.5008118451074204,1
+Human Resources,medium,General Inquiry,0,0,0.0,0.5587178138735215,low,0.5048925092711843,0
+Human Resources,medium,Human Resources,1,1,1.0,0.5246653345827663,high,0.5005395038986451,0
+Human Resources,medium,Sales and Pre-Sales,0,0,0.0,0.5214938224722382,high,0.5039868399239624,0
+Human Resources,high,General Inquiry,0,0,0.0,0.7183924359453755,low,0.5369670185801629,0
+Human Resources,medium,Sales and Pre-Sales,0,0,0.0,0.7185274933499216,high,0.5117358324531817,0
+Human Resources,medium,Customer Service,0,0,0.0,0.7264174711668911,low,0.5182261308838639,0
+Human Resources,medium,Human Resources,1,1,1.0,0.5170578353819767,medium,0.5007852819927111,1
+Human Resources,high,Human Resources,1,1,1.0,0.7228899021721473,high,0.6030842883677889,1
+Human Resources,medium,Sales and Pre-Sales,0,0,0.0,0.696440847297049,high,0.5155559913964899,0
+Human Resources,low,General Inquiry,0,0,0.0,0.5332237495296482,low,0.5001588374672111,1
+Human Resources,high,Human Resources,1,1,1.0,0.7310202675451822,low,0.7307855325002166,0
+Human Resources,high,Technical & IT Support,0,1,0.5,0.5287104988982577,high,0.6137900638109269,1
+Human Resources,medium,Human Resources,1,1,1.0,0.7310098834634076,medium,0.503986828748802,1
+Human Resources,medium,General Inquiry,0,0,0.0,0.534162405495891,high,0.5027156438003819,0
+Human Resources,medium,Sales and Pre-Sales,0,0,0.0,0.7305919895934758,low,0.683092109169926,0
+Human Resources,high,Customer Service,0,1,0.3333333333333333,0.7033628079693237,high,0.5594912868776969,1
+Human Resources,medium,Customer Service,0,1,0.5,0.5077432163426424,medium,0.5007604578234257,1
+Human Resources,medium,Human Resources,1,1,1.0,0.6646875747339297,medium,0.5050356939173042,1
+Human Resources,medium,Human Resources,1,1,1.0,0.7117475848348254,high,0.5653932509725248,0
+Human Resources,high,Human Resources,1,1,1.0,0.7309912594586034,low,0.5434423699255952,0
+Human Resources,medium,Human Resources,1,1,1.0,0.6984391740321972,medium,0.5001504819911172,1
+Human Resources,medium,General Inquiry,0,1,0.5,0.568072386735296,high,0.5177972962657267,0
+Human Resources,high,General Inquiry,0,1,0.5,0.6073642592899576,high,0.6906762522793614,1
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5207824278092814,high,0.500599272786067,0
+Returns and Exchanges,high,Human Resources,0,0,0.0,0.6500706376633206,high,0.6097470469949224,1
+Returns and Exchanges,medium,Sales and Pre-Sales,0,1,0.3333333333333333,0.5106625622430754,high,0.5024458859595236,0
+Returns and Exchanges,high,Service Outages and Maintenance,0,0,0.0,0.5174018294886008,high,0.6452887329366718,1
+Returns and Exchanges,high,General Inquiry,0,0,0.0,0.7203358594538833,low,0.5607766858358292,0
+Returns and Exchanges,low,Human Resources,0,1,0.3333333333333333,0.5125539734473917,medium,0.5020651962977388,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.7298270242489332,medium,0.5158888342202071,1
+Returns and Exchanges,high,General Inquiry,0,0,0.0,0.590177395435466,high,0.5101620659518873,1
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5259807596796846,high,0.5004556236575245,0
+Returns and Exchanges,high,General Inquiry,0,0,0.0,0.6894853468112235,high,0.650481506736396,1
+Returns and Exchanges,medium,Sales and Pre-Sales,0,1,0.3333333333333333,0.5099900134719454,high,0.5000776222798907,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.7307298631658035,high,0.5080804001081721,0
+Returns and Exchanges,high,General Inquiry,0,0,0.0,0.5470408875921334,high,0.5533516695973546,1
+Returns and Exchanges,high,Technical & IT Support,0,0,0.0,0.5331390015289676,high,0.5330000625967085,1
+Returns and Exchanges,high,Technical & IT Support,0,0,0.0,0.5887813689252224,high,0.7027893691430156,1
+Returns and Exchanges,high,Customer Service,0,0,0.0,0.6840198183195334,low,0.6148165720245323,0
+Returns and Exchanges,high,Human Resources,0,0,0.0,0.5248235726670167,low,0.5100336107522635,0
+Returns and Exchanges,high,General Inquiry,0,0,0.0,0.5942413383216736,high,0.5044443414691628,1
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5235189575557053,low,0.500887647502783,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5016983625120784,medium,0.5000734855051798,1
+Returns and Exchanges,medium,Customer Service,0,0,0.0,0.6445806722993976,low,0.5329066783657213,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5738941855782967,low,0.5032867415965584,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.7310124384867133,medium,0.6123082694824459,1
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5140862079441003,high,0.5070301061680806,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.6689561101036305,high,0.5006560980418338,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.6941719846347697,high,0.50018739418588,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.646865584768253,low,0.5024842331657444,0
+Returns and Exchanges,medium,Human Resources,0,1,0.3333333333333333,0.5072897233438001,medium,0.5179221630768591,1
+Returns and Exchanges,low,Human Resources,0,0,0.0,0.5628500879680307,medium,0.509936574920785,0
+Returns and Exchanges,medium,Returns and Exchanges,1,1,1.0,0.5223689327032007,high,0.5004649695880552,0
+Sales and Pre-Sales,medium,Customer Service,0,1,0.3333333333333333,0.7285753399658991,low,0.6225140842250572,0
+Sales and Pre-Sales,low,Customer Service,0,1,0.5,0.5019041594262743,medium,0.5004669971337468,0
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.6510310204054617,low,0.5097788562369283,0
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.5037756580296634,low,0.5006386362384947,0
+Sales and Pre-Sales,medium,Human Resources,0,0,0.0,0.7144618860570946,medium,0.5083894836642695,1
+Sales and Pre-Sales,medium,Customer Service,0,1,0.3333333333333333,0.7262504054702767,low,0.6801789027750937,0
+Sales and Pre-Sales,medium,General Inquiry,0,1,0.3333333333333333,0.7251195510143256,low,0.5436817441229753,0
+Sales and Pre-Sales,medium,Customer Service,0,0,0.0,0.5880617118794532,low,0.5005415511178946,0
+Sales and Pre-Sales,medium,Customer Service,0,0,0.0,0.5894747122803502,medium,0.5060614651375261,1
+Sales and Pre-Sales,high,Technical & IT Support,0,0,0.0,0.5084517882318761,high,0.6511837536562474,1
+Sales and Pre-Sales,high,General Inquiry,0,0,0.0,0.5803098270523718,high,0.5007931402401867,1
+Sales and Pre-Sales,medium,Customer Service,0,1,0.5,0.6502131136243084,low,0.5024697316650066,0
+Sales and Pre-Sales,medium,Customer Service,0,1,0.5,0.7125711440732783,low,0.5123005002606741,0
+Sales and Pre-Sales,high,Customer Service,0,0,0.0,0.5316240532303188,high,0.6787889737849656,1
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.7294645907434412,high,0.5025263418587291,0
+Sales and Pre-Sales,high,Human Resources,0,0,0.0,0.5226727104847774,high,0.5037305691908638,1
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.727363676605308,high,0.5130053483783928,0
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.5534777309967185,medium,0.5048691199367114,1
+Sales and Pre-Sales,medium,General Inquiry,0,1,0.5,0.5523007415528676,low,0.5061307270788893,0
+Sales and Pre-Sales,medium,Returns and Exchanges,0,0,0.0,0.6423587156621868,medium,0.5252877561547724,1
+Sales and Pre-Sales,medium,Customer Service,0,1,0.5,0.7298100763529494,low,0.513128062187901,0
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.6975425872374005,medium,0.5094086279709702,1
+Sales and Pre-Sales,medium,General Inquiry,0,1,0.25,0.6416461766592423,low,0.501044328435684,0
+Sales and Pre-Sales,low,Sales and Pre-Sales,1,1,1.0,0.6644535266878128,medium,0.5063191784591257,0
+Sales and Pre-Sales,medium,Customer Service,0,1,0.3333333333333333,0.5075274531547006,low,0.5131584339679914,0
+Sales and Pre-Sales,medium,Customer Service,0,1,0.3333333333333333,0.7283960458893318,low,0.609640546771929,0
+Sales and Pre-Sales,medium,Customer Service,0,1,0.5,0.6123363909593305,medium,0.5001549649119119,1
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.7304425938825952,low,0.52768559300053,0
+Sales and Pre-Sales,medium,Customer Service,0,0,0.0,0.5783473000246508,low,0.5020577658668881,0
+Sales and Pre-Sales,medium,Sales and Pre-Sales,1,1,1.0,0.7308995809108851,low,0.5003678750863527,0
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.6362138890795062,high,0.6635353301957878,1
+Service Outages and Maintenance,high,Billing and Payments,0,1,0.5,0.5240269010950999,high,0.5822738549337076,1
+Service Outages and Maintenance,medium,Customer Service,0,1,0.5,0.5656470683997366,high,0.580599328320794,0
+Service Outages and Maintenance,high,Technical & IT Support,0,1,0.5,0.5534844150420827,high,0.5336016539888576,1
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.6828180494003374,medium,0.5273980171376064,1
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.7281011716898441,low,0.7166177978810677,0
+Service Outages and Maintenance,medium,Customer Service,0,0,0.0,0.5182692290298346,medium,0.5040536766237772,1
+Service Outages and Maintenance,high,Technical & IT Support,0,1,0.3333333333333333,0.5033285961952547,high,0.5001727788844059,1
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.6530662807500706,high,0.659950571814665,0
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.7097487332757483,medium,0.510475402573177,0
+Service Outages and Maintenance,high,Customer Service,0,0,0.0,0.5493066688267741,low,0.5102940107893377,0
+Service Outages and Maintenance,medium,Technical & IT Support,0,1,0.25,0.5363401535389355,high,0.5964344446562859,0
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.6476312432752541,high,0.6866009848183998,0
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.5068066394622682,high,0.5027614881757436,0
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.6554792077680629,high,0.5339428319084346,0
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.7121661499799459,high,0.7072233980958376,1
+Service Outages and Maintenance,high,Sales and Pre-Sales,0,0,0.0,0.6319867371789982,high,0.6657296479562521,1
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.6000861752190206,high,0.5257075207615942,1
+Service Outages and Maintenance,high,Human Resources,0,1,0.3333333333333333,0.500601324544949,high,0.5002178426373981,1
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.6735683456194231,medium,0.506112117852603,0
+Service Outages and Maintenance,high,Service Outages and Maintenance,1,1,1.0,0.610526781161756,high,0.5780511662282056,1
+Service Outages and Maintenance,medium,Service Outages and Maintenance,1,1,1.0,0.5077827056086446,low,0.502525904148292,0
+Service Outages and Maintenance,high,Customer Service,0,1,0.5,0.6397613761942136,low,0.5340836822292897,0
+Technical & IT Support,medium,Returns and Exchanges,0,1,0.3333333333333333,0.680165936505888,medium,0.6724564053392681,1
+Technical & IT Support,medium,Service Outages and Maintenance,0,0,0.0,0.5069153164466225,low,0.5003609071091735,0
+Technical & IT Support,medium,Returns and Exchanges,0,1,0.5,0.5013114965012777,high,0.5002719084755228,0
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.7047998205596867,medium,0.5006423248519142,1
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.5265394067953376,medium,0.5020982446377319,1
+Technical & IT Support,high,General Inquiry,0,0,0.0,0.53596427647391,medium,0.5037812994268046,0
+Technical & IT Support,high,Customer Service,0,0,0.0,0.6123883730419856,medium,0.5306555352125086,0
+Technical & IT Support,medium,Service Outages and Maintenance,0,0,0.0,0.7209450966008026,medium,0.6680950986111504,1
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.7127277695578804,medium,0.5078013438306531,1
+Technical & IT Support,high,General Inquiry,0,1,0.5,0.5151814231077773,high,0.5617980551922694,1
+Technical & IT Support,medium,Returns and Exchanges,0,0,0.0,0.7266738520930877,low,0.5399613710837333,0
+Technical & IT Support,medium,Service Outages and Maintenance,0,0,0.0,0.6943673133056628,low,0.5121019078812437,0
+Technical & IT Support,medium,Customer Service,0,1,0.3333333333333333,0.6171272999909498,medium,0.5036127166749959,1
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.701398800678831,medium,0.5496488614136005,1
+Technical & IT Support,medium,Returns and Exchanges,0,0,0.0,0.509367344893019,medium,0.5003912757167029,1
+Technical & IT Support,medium,Returns and Exchanges,0,0,0.0,0.5366338217476262,low,0.5029126732823033,0
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.5308150079243019,medium,0.5091610262851278,1
+Technical & IT Support,medium,Human Resources,0,0,0.0,0.6248508485434855,medium,0.5054673059042478,1
+Technical & IT Support,high,Customer Service,0,0,0.0,0.5881875919727085,low,0.538276570762912,0
+Technical & IT Support,high,Returns and Exchanges,0,0,0.0,0.641758264362,high,0.5104536554764715,1
+Technical & IT Support,medium,General Inquiry,0,0,0.0,0.586881539884156,medium,0.5056176881018738,1
+Technical & IT Support,medium,Service Outages and Maintenance,0,0,0.0,0.5180373972916201,medium,0.5692489002965788,1
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.7287843439594744,low,0.5747531772588389,0
+Technical & IT Support,medium,Human Resources,0,0,0.0,0.5115431168520854,medium,0.500393896485916,1
+Technical & IT Support,high,Service Outages and Maintenance,0,0,0.0,0.5088626325115879,high,0.5079632903697266,1
+Technical & IT Support,high,Service Outages and Maintenance,0,1,0.3333333333333333,0.5680022513647929,high,0.5071673279757176,1
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.7122070299771208,low,0.5194467247041371,0
+Technical & IT Support,high,Customer Service,0,0,0.0,0.6225274603519797,high,0.5088525885567278,1
+Technical & IT Support,high,Customer Service,0,1,0.3333333333333333,0.5730885006406505,medium,0.5037827149561248,0
+Technical & IT Support,medium,Customer Service,0,0,0.0,0.5724657743234782,medium,0.5032276055884453,1

@@ -1,0 +1,135 @@
+PRIORITY ESCALATION CRITERIA
+Universal routing guidance — applies across all departments
+============================================================
+
+OVERVIEW
+--------
+Priority is determined by business impact, urgency, and scope of effect —
+not by department. This document defines HIGH, MEDIUM, and LOW priority
+criteria that apply regardless of which department a ticket is routed to.
+
+Training data distribution: HIGH (38%), MEDIUM (41%), LOW (20%).
+The classifier must distinguish these from language patterns alone.
+This document provides grounding for when to confirm, escalate, or
+de-escalate a priority prediction.
+
+PRIORITY: HIGH
+--------------
+Route as HIGH priority when any of the following apply:
+- Multiple users or the entire organisation is blocked from working
+- Revenue is actively being lost (checkout down, payments failing live,
+  campaigns completely non-functional)
+- A financial transaction has already occurred incorrectly (fraud, double
+  charge, unauthorised billing) and money needs to be recovered
+- A business-critical system is completely unavailable with no workaround
+- An employee cannot start work on day one due to missing access or equipment
+- A security incident is in progress (malware, ransomware, confirmed breach,
+  unauthorized access to medical or financial data)
+- A deal is closing imminently and the customer is at risk of going to a
+  competitor; urgent brand strategy request with imminent deadline
+- There is regulatory, legal, or data safety exposure requiring immediate action
+- A return window is about to expire and the customer has not received a label
+- Service outage affecting multiple products or users simultaneously with no
+  workaround
+
+Language signals that strongly predict HIGH priority:
+"urgent", "critical", "all users", "entire organisation", "cannot work",
+"data breach", "unauthorized access", "system down", "complete failure",
+"imminently", "losing clients", "patient care impacted", "revenue at risk",
+"no workaround", "immediate action required".
+
+Representative high-priority examples from training data:
+  - "Support Request for System Outages: Facing system outages that are
+    impacting multiple connected devices during peak usage hours." [IT Support]
+
+  - "Urgent Assistance Required for Medical Data Security Breach: Concerned
+    about the recent unauthorized exposure of medical details via unsecured
+    equipment. This is affecting all departments." [IT Support]
+
+  - "Experiencing Service Outage Due to Potential Infrastructure Overload:
+    There is a service outage possibly caused by infrastructure overload.
+    The affected servers were restarted but the problem persists." [Service Outages]
+
+  - "Payment Discrepancy: I am contacting you regarding an unexpected payment
+    discrepancy in my recent invoice. The amount charged does not match the
+    agreed rate and requires immediate correction." [Billing]
+
+  - "Today's Problem with Data Sync: Faced data synchronization problems during
+    the usual update process, affecting all users. After restarting, the issue
+    persists and team is blocked." [Customer Service]
+
+PRIORITY: MEDIUM
+----------------
+Route as MEDIUM when the issue is real and needs resolution within normal SLA
+windows but is not causing immediate loss or blocking the customer entirely:
+- Single user affected, not the whole organisation
+- Service is degraded but partially working
+- Analytics tool producing inaccurate results but still functional
+- Billing discrepancy exists but no money lost yet; invoice clarification needed
+- Escalation request where the customer is unhappy but stable
+- Integration failure affecting one workflow with partial workaround
+- Pre-sales prospect is actively evaluating but not yet at decision stage
+- Return or exchange is in progress but not time-critical
+- Performance degradation (slow load times, sluggish responses) without
+  complete outage
+- Recurring problem that is manageable but needs permanent resolution
+
+Language signals that predict MEDIUM priority:
+"intermittent", "slow", "degraded", "discrepancy", "sometimes", "partially",
+"one user", "we have a workaround", "need resolution within the week",
+"not urgent but important", "sporadic", "inaccurate results".
+
+Representative medium-priority examples from training data:
+  - "Problems with Login Post Update: I am facing a login problem since the
+    latest update. It might be related to cache. I have a workaround using
+    incognito mode but need a permanent fix." [IT Support]
+
+  - "Concern Regarding Monthly Invoices: A billing discrepancy was noticed on
+    last month's invoice. This might be caused by a synchronization error." [Billing]
+
+  - "Intermittent Access Problems on SaaS Platform: Facing sporadic connectivity
+    difficulties with the cloud-native SaaS system. The platform is partially
+    usable." [Customer Service]
+
+  - "Sudden Disruption of Multiple Product Connections: A network configuration
+    update led to routing conflicts impacting some but not all devices." [Service Outages]
+
+  - "Request for Support with PostgreSQL Integration: Seeking assistance
+    integrating PostgreSQL 13 with data analytics tools for an active project." [Customer Service]
+
+PRIORITY: LOW
+-------------
+Route as LOW when the ticket is informational, administrative, or the customer
+has indicated no urgency:
+- General question with no active problem
+- Request to update contact or billing details for future use
+- Pre-sales inquiry at early exploration stage with no deadline
+- Routine status check on an active but non-urgent ticket
+- Minor performance issue or UI bug with a workaround
+- Post-incident review request once service is fully restored
+- Single-user issue that is inconvenient but not blocking work
+- Documentation or guidance requests with no stated deadline
+- Early-stage brand or marketing strategy inquiries
+
+Language signals that predict LOW priority:
+"when you have a chance", "no rush", "just wondering", "for future reference",
+"informational", "exploring options", "minor issue", "workaround in place",
+"post-incident", "general question", "could you provide information".
+
+Representative low-priority examples from training data:
+  - "Query on Integrating Analytics Tools with KNIME for Investment Optimization:
+    I am requesting information on analytics tools that can be integrated with
+    KNIME to enhance investment optimization workflows." [IT Support]
+
+  - "Inquiry About Detailed Marketing Agency Service Offerings: I am reaching
+    out to obtain detailed information about the services provided. No urgency." [Sales]
+
+  - "Update Billing Processes Using Data Analytics: Requesting an update on
+    the billing processes, particularly the payment methods utilized. This is
+    for future planning." [Billing]
+
+  - "HR Portal Access Problem: One employee is unable to access the HR portal.
+    They have a workaround using a colleague's machine in the meantime." [HR]
+
+  - "Problem with Data Synchronization: Encountering occasional data
+    synchronization failures across Wave and PrestaShop. Intermittent only." [General Inquiry]

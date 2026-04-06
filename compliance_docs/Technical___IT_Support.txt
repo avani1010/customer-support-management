@@ -1,0 +1,113 @@
+DEPARTMENT: Technical & IT Support
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+
+OVERVIEW
+--------
+The Technical & IT Support department is by far the largest queue (approx. 4,385
+tickets — 59% of all tickets in the training data). It handles all technical
+issues related to hardware, software, networks, cloud infrastructure,
+cybersecurity, system access, and product performance failures.
+
+This department consolidates what was previously split across "Technical Support"
+and "Product Support". A ticket belongs here when the customer or employee is
+experiencing a technology failure that requires diagnosis and resolution:
+something is broken, inaccessible, performing poorly, or behaving unexpectedly,
+and the cause is technical rather than financial or administrative.
+
+In the training data, dominant subject areas include: medical data security
+incidents and breaches, SaaS platform connectivity and login issues, data
+analytics and investment optimization tool failures, network disruptions, system
+crashes during peak usage, integration failures between software tools, and
+performance degradation (slow load times, sluggish dashboards, frozen
+applications).
+
+Key ticket types: Incident (unauthorized access, system crashes, login failures,
+active security breaches), Problem (recurring performance degradation, persistent
+integration failures, ongoing analytics tool malfunctions), Request (guidance
+on security practices, integration how-tos, encryption techniques), Change
+(infrastructure modifications, software updates, configuration changes).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Tech Support, IT, Performance, Bug, Documentation, Feedback, Security, Feature,
+Disruption, Technical, Network, Outage, Resolution, Crash, Guidance, Firmware,
+Hardware, Integration, Medical, Encryption, Authentication, Database.
+
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Security Incident: Medical Data Compromise: Customer Support is documenting
+    a critical event where medical data security was compromised in the hospital's
+    systems. The breach might have been due to weak passwords or outdated software." [low|Incident]
+
+  - "Network Disruptions Impacting Healthcare Data: I am reporting an issue
+    concerning my healthcare provider's network. We are experiencing sporadic
+    outages that hinder access to medical information. We suspect bugs in the
+    firmware of our TP-Link switch." [medium|Problem]
+
+  - "Support Request for System Outages: Facing system outages that are impacting
+    multiple connected devices during peak usage hours. These outages might be
+    due to server overload or a network misconfiguration." [high|Incident]
+
+  - "Urgent Assistance Required for Critical Error in Data Analysis: A critical
+    error has occurred during data analysis, leading to delays in investment
+    optimization decisions. Incompatible software versions appear to be the
+    cause." [high|Incident]
+
+  - "Problems with Login Post Update: I am facing a login problem that started
+    after the latest update. It might be related to cache, and I have already
+    attempted clearing cookies and restarting the browser." [medium|Problem]
+
+  - "Support Inquiry for Unforeseen Login Issues: Sudden login failures
+    experienced by all users. Suspected cause: potential database connection
+    problem. Actions taken: restarted the server and checked logs." [high|Incident]
+
+  - "Connectivity Problems with Logitech K780 Keyboard: The issue arises when
+    using different SaaS applications and I suspect it could be due to Bluetooth
+    interference or driver incompatibility." [medium|Incident]
+
+  - "Query on Integrating Analytics Tools with KNIME for Investment Optimization:
+    I am requesting information on analytics tools that can be integrated with
+    KNIME to enhance investment optimization workflows." [low|Request]
+
+  - "Slow Page Load Speeds: Users have been encountering slow load speeds across
+    the platform, particularly during peak traffic hours." [medium|Problem]
+
+  - "Encountered Issues During Medical Data Transfer: An issue occurred where
+    the transfer of medical data through a USB storage device has not been
+    successful. I suspect a compatibility problem." [low|Incident]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: Multiple users or the entire organisation is blocked from working; a
+security incident is in progress (malware, ransomware, confirmed breach,
+unauthorised access); a business-critical system is completely unavailable with
+no workaround; revenue is actively being lost due to a technical failure;
+medical data or patient safety is at risk; all-user login failure.
+
+MEDIUM: Single user or team affected but the organisation is not blocked;
+service is degraded but partially working; recurring performance issue with a
+workaround in place; integration failure affecting one workflow; post-update
+regression affecting a feature.
+
+LOW: General technical guidance or "how to" requests; security configuration
+questions (not an active breach); minor performance issues with workarounds;
+informational requests about integration options; issues affecting one
+non-critical device; low-impact bugs.
+
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to IT Support when: the customer or employee reports a technical failure
+in hardware, software, network, or cloud systems; a security incident; a
+product malfunction; or any situation where the root cause is technology
+rather than billing, HR, or a service-wide outage.
+
+Note that account access issues caused by a billing lapse should be routed to
+Billing and Payments, not here. IT Support handles access failures caused by
+technical faults (password resets, authentication errors, VPN issues, account
+lockouts due to security policies).
+
+If the issue is affecting the entire organisation or a large region and appears
+to be infrastructure-level, also consider Service Outages and Maintenance. The
+key distinction: IT Support for one user/team with a technical fault; Service
+Outages for multi-user or platform-wide disruption.

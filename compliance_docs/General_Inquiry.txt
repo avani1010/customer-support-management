@@ -1,0 +1,86 @@
+DEPARTMENT: General Inquiry
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+
+OVERVIEW
+--------
+The General Inquiry department handles questions and requests that are
+informational or administrative in nature and do not require technical
+resolution, financial action, or complaint handling. In the training data
+this is the smallest queue (approx. 100 tickets) and contains a mix of
+informational requests, integration compatibility questions, UI change
+requests, and occasionally misrouted tickets that describe a technical
+problem but are framed as a general question.
+
+Typical subjects include: data security solution queries, requests for
+integration documentation, UI/UX improvement requests, general questions
+about platform capabilities, and early-stage inquiries about services.
+
+Key ticket types: Request, Change (UI or process updates), Incident
+(technical issues framed as information requests), Problem (performance
+or integration issues framed as inquiries).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Feedback, Tech Support, IT, Performance, Documentation, Feature, Bug,
+Security, Product, Technical, Sales, Disruption, Network, Guidance.
+
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Integration Capabilities for WooCommerce and Sage Accounting Systems:
+    Reaching out regarding integration capabilities for our SaaS platform —
+    WooCommerce with Sage Accounting. Would appreciate detailed information
+    on the systems that are currently integrated." [medium|Request]
+
+  - "Request for Data Security Solutions: Is it possible to get information
+    on data security solutions for healthcare providers? What measures are
+    available to protect sensitive patient data?" [low|Request]
+
+  - "Enhance User Interface for Optimal Navigation Experience: Requesting an
+    update to the user interface to improve navigation and overall user
+    experience in the project management software." [low|Change]
+
+  - "Enhance Investment Strategy with AI Tools: I am contacting you to seek
+    information on the integration of AI-driven analytics tools to refine our
+    investment strategies and improve portfolio performance." [medium|Change]
+
+  - "Inquiry for Network Security Permissions: I am formally requesting
+    modifications related to access, configuration, and integration of network
+    security tools across our systems." [high|Change]
+
+  - "Problem with Data Synchronization: I am encountering occasional data
+    synchronization failures across Wave, Netzteil, and PrestaShop. The issue
+    appears intermittent." [low|Incident]
+
+  - "Services in Data Analytics: Seeking information about the data analytics
+    services available for investment optimization." [medium|Request]
+
+  - "Poor Performance of Digital Campaigns: Insufficient data analysis tools
+    are currently being employed, impacting campaign outcomes." [low|Problem]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: Requests involving active security permission changes or access
+modifications affecting live systems; urgent compliance or regulatory
+documentation requests; network configuration change requests affecting
+production systems.
+
+MEDIUM: Integration capability questions for an active project; requests for
+documentation to support an ongoing evaluation; moderate platform change
+requests.
+
+LOW: General informational questions with no active problem; early-stage
+curiosity about services; minor UI enhancement requests; routine status
+questions about non-urgent topics.
+
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to General Inquiry when: the ticket is a question rather than a problem;
+there is no technical failure requiring diagnosis; no financial transaction is
+involved; the customer does not express strong dissatisfaction; and the request
+does not fit a more specific queue.
+
+If the question is clearly pre-sales (pricing, trials, purchasing decisions),
+prefer Sales and Pre-Sales instead. If the question involves a live technical
+fault, route to IT Support. If the ticket expresses frustration about a
+relationship issue, route to Customer Service.

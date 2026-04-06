@@ -1,0 +1,23 @@
+.idea/
+.DS_Store
+__pycache__/
+*.safetensors
+*.faiss
+secrets.env
+models/
+*.pkl
+
+# Ignore model checkpoints
+v6_multitask_model/
+*.pt
+*.pth
+*.bin
+checkpoint*/
+
+# Training artifacts
+trainer_state.json
+training_args.bin
+
+# Tokenizers (optional)
+tokenizer.json
+tokenizer_config.json

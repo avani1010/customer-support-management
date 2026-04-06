@@ -1,0 +1,81 @@
+true_dept,true_priority,pred_dept,pred_priority,transformer_dept,transformer_conf,confidence,llm_overrides_dept,fast_path,t_total_s,ttft_s,tpot_s,reasoning_tokens
+Human Resources,medium,Human Resources,low,Human Resources,0.9938,high,0,0,1.467,1.537,0.0013,77
+Billing and Payments,medium,Billing and Payments,medium,Billing and Payments,0.9959,high,0,1,0.584,1.537,0.0048,21
+General Inquiry,medium,General Inquiry,medium,General Inquiry,0.8464,high,0,1,0.604,1.537,0.005,20
+Human Resources,medium,Technical & IT Support,medium,Technical & IT Support,0.7826,high,0,1,0.757,1.537,0.0045,22
+Customer Service,medium,Customer Service,medium,Customer Service,0.9848,high,0,1,0.435,1.537,0.005,20
+General Inquiry,medium,Technical & IT Support,medium,Technical & IT Support,0.4781,medium,0,0,1.98,1.537,0.0066,60
+Customer Service,medium,Customer Service,medium,Customer Service,0.961,high,0,1,0.546,1.537,0.005,20
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.7926,high,0,1,0.629,1.537,0.0045,22
+Billing and Payments,high,Billing and Payments,high,Billing and Payments,0.9967,high,0,0,1.353,1.537,0.0012,86
+Customer Service,medium,Technical & IT Support,medium,General Inquiry,0.5548,medium,1,0,2.521,1.537,0.01,93
+Returns and Exchanges,high,Technical & IT Support,high,General Inquiry,0.3728,high,1,0,2.009,1.537,0.0056,76
+Human Resources,high,Human Resources,high,Human Resources,0.9935,high,0,1,0.589,1.537,0.005,20
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.7776,high,0,1,0.831,1.537,0.0045,22
+Human Resources,medium,Customer Service,medium,Returns and Exchanges,0.6102,medium,1,0,1.952,1.537,0.004,91
+Service Outages and Maintenance,medium,Service Outages and Maintenance,high,Service Outages and Maintenance,0.9963,high,0,0,1.855,1.537,0.0032,83
+Returns and Exchanges,low,General Inquiry,low,Returns and Exchanges,0.7141,medium,1,0,2.113,1.537,0.0069,76
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.6011,medium,0,0,2.751,1.537,0.0128,91
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.9942,high,0,1,2.926,1.537,0.0609,22
+Sales and Pre-Sales,medium,General Inquiry,medium,General Inquiry,0.8783,high,0,1,14.371,1.537,0.6392,20
+Returns and Exchanges,medium,Sales and Pre-Sales,medium,Returns and Exchanges,0.5959,medium,1,0,2.251,1.537,0.0076,87
+Billing and Payments,medium,Billing and Payments,medium,Billing and Payments,0.9975,high,0,1,0.646,1.537,0.0048,21
+Service Outages and Maintenance,medium,Service Outages and Maintenance,medium,Service Outages and Maintenance,0.9932,high,0,0,3.911,1.537,0.0294,79
+Billing and Payments,medium,Billing and Payments,low,Billing and Payments,0.9972,high,0,0,2.988,1.537,0.0203,69
+Returns and Exchanges,high,General Inquiry,high,General Inquiry,0.4213,high,0,0,2.393,1.537,0.0092,88
+Human Resources,medium,General Inquiry,medium,General Inquiry,0.6685,high,0,1,0.552,1.537,0.005,20
+Service Outages and Maintenance,medium,Service Outages and Maintenance,high,Service Outages and Maintenance,0.9841,high,0,1,0.653,1.537,0.0045,22
+Returns and Exchanges,medium,Returns and Exchanges,medium,Returns and Exchanges,0.8049,high,0,1,0.65,1.537,0.0048,21
+Sales and Pre-Sales,medium,Technical & IT Support,medium,Technical & IT Support,0.7052,medium,0,0,2.061,1.537,0.0061,78
+Customer Service,medium,Technical & IT Support,medium,Service Outages and Maintenance,0.2894,medium,1,0,1.68,1.537,0.0012,85
+Human Resources,medium,Human Resources,medium,Human Resources,0.876,high,0,1,0.662,1.537,0.005,20
+Sales and Pre-Sales,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9613,high,0,1,0.54,1.537,0.0048,21
+Technical & IT Support,high,Technical & IT Support,high,Technical & IT Support,0.3937,high,0,0,2.375,1.537,0.009,88
+Billing and Payments,high,Billing and Payments,high,Billing and Payments,0.9882,high,0,1,0.982,1.537,0.0048,21
+Sales and Pre-Sales,medium,Sales and Pre-Sales,low,Sales and Pre-Sales,0.9399,high,0,1,0.936,1.537,0.0048,21
+Sales and Pre-Sales,medium,Sales and Pre-Sales,medium,Human Resources,0.5573,medium,1,0,2.623,1.537,0.0119,87
+Customer Service,medium,Customer Service,medium,Customer Service,0.6986,high,0,1,0.972,1.537,0.005,20
+Service Outages and Maintenance,medium,Service Outages and Maintenance,medium,Service Outages and Maintenance,0.9704,high,0,1,0.91,1.537,0.0045,22
+General Inquiry,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.8593,high,0,1,0.619,1.537,0.0048,21
+Returns and Exchanges,high,General Inquiry,high,General Inquiry,0.3554,high,0,0,1.915,1.537,0.0043,76
+Customer Service,medium,Customer Service,medium,Customer Service,0.7808,high,0,1,0.895,1.537,0.005,20
+Technical & IT Support,high,Technical & IT Support,high,Technical & IT Support,0.9521,high,0,1,0.983,1.537,0.0045,22
+Billing and Payments,medium,Billing and Payments,medium,Billing and Payments,0.995,high,0,1,1.115,1.537,0.0048,21
+Customer Service,high,Technical & IT Support,medium,Technical & IT Support,0.9213,high,0,1,0.532,1.537,0.0045,22
+Human Resources,medium,Human Resources,high,Human Resources,0.9935,high,0,0,1.829,1.537,0.003,80
+Billing and Payments,medium,Billing and Payments,medium,Billing and Payments,0.9947,high,0,1,0.691,1.537,0.0048,21
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.7357,high,0,1,0.521,1.537,0.0045,22
+Billing and Payments,medium,Customer Service,medium,Customer Service,0.82,high,0,1,0.854,1.537,0.005,20
+Human Resources,medium,Human Resources,medium,Human Resources,0.813,high,0,1,0.738,1.537,0.005,20
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.8934,high,0,1,0.537,1.537,0.0045,22
+Sales and Pre-Sales,medium,Technical & IT Support,medium,Technical & IT Support,0.5382,medium,0,0,3.128,1.537,0.0203,76
+Returns and Exchanges,medium,Returns and Exchanges,medium,Returns and Exchanges,0.9777,high,0,1,0.744,1.537,0.0048,21
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.6092,medium,0,0,2.643,1.537,0.0149,71
+Customer Service,medium,Customer Service,medium,Customer Service,0.965,high,0,1,1.295,1.537,0.005,20
+General Inquiry,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.765,high,0,1,0.463,1.537,0.0048,21
+Returns and Exchanges,high,Technical & IT Support,high,Returns and Exchanges,0.5064,high,1,0,2.114,1.537,0.0091,58
+General Inquiry,medium,Customer Service,medium,General Inquiry,0.456,medium,1,0,2.37,1.537,0.0107,73
+Returns and Exchanges,medium,General Inquiry,medium,Returns and Exchanges,0.4603,medium,1,0,2.095,1.537,0.0098,52
+General Inquiry,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.4582,medium,0,0,2.289,1.537,0.0089,79
+Returns and Exchanges,high,Returns and Exchanges,medium,Returns and Exchanges,0.7954,high,0,1,1.036,1.537,0.0048,21
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.9595,high,0,1,0.497,1.537,0.0045,22
+Sales and Pre-Sales,medium,Customer Service,medium,Returns and Exchanges,0.5114,medium,1,0,2.109,1.537,0.0079,66
+Customer Service,high,Technical & IT Support,high,Customer Service,0.3904,high,1,0,2.168,1.537,0.0075,77
+Human Resources,high,Human Resources,high,Human Resources,0.9846,high,0,1,0.815,1.537,0.005,20
+Technical & IT Support,high,Technical & IT Support,high,Technical & IT Support,0.9686,high,0,1,0.82,1.537,0.0045,22
+Sales and Pre-Sales,high,Technical & IT Support,high,Returns and Exchanges,0.3889,high,1,0,2.073,1.537,0.0065,75
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.9936,high,0,0,1.952,1.537,0.0046,79
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.9961,high,0,1,0.801,1.537,0.0045,22
+Human Resources,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9247,high,0,1,0.716,1.537,0.0048,21
+General Inquiry,medium,General Inquiry,medium,General Inquiry,0.9865,high,0,1,0.745,1.537,0.005,20
+Billing and Payments,high,Billing and Payments,high,Billing and Payments,0.9826,high,0,1,0.495,1.537,0.0048,21
+Sales and Pre-Sales,medium,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.6911,medium,0,0,2.41,1.537,0.01,82
+General Inquiry,medium,Customer Service,high,Service Outages and Maintenance,0.5606,medium,1,0,2.096,1.537,0.0064,80
+Billing and Payments,medium,Billing and Payments,medium,Billing and Payments,0.9944,high,0,1,0.704,1.537,0.0048,21
+General Inquiry,medium,Technical & IT Support,medium,Technical & IT Support,0.3076,medium,0,0,2.808,1.537,0.0145,84
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.8408,high,0,1,0.854,1.537,0.0045,22
+General Inquiry,medium,General Inquiry,high,General Inquiry,0.7611,high,0,1,1.084,1.537,0.005,20
+Service Outages and Maintenance,high,Service Outages and Maintenance,high,Service Outages and Maintenance,0.994,high,0,1,0.691,1.537,0.0045,22
+Technical & IT Support,medium,Technical & IT Support,medium,Technical & IT Support,0.9837,high,0,1,1.159,1.537,0.0045,22
+Customer Service,medium,Customer Service,medium,Customer Service,0.7678,high,0,1,0.788,1.537,0.005,20
+Sales and Pre-Sales,low,Sales and Pre-Sales,medium,Sales and Pre-Sales,0.8616,high,0,1,0.913,1.537,0.0048,21

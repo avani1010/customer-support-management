@@ -1,0 +1,89 @@
+DEPARTMENT: Human Resources
+ROUTING SCOPE AND PRIORITY GUIDANCE
+=====================================
+
+OVERVIEW
+--------
+The Human Resources department handles tickets submitted by employees (or on
+behalf of employees) relating to internal HR processes: onboarding, training,
+employee portal access, payroll, leave management, performance, and HR system
+issues. It also receives tickets about employee-facing software failures (e.g.,
+HR portal login errors, training platform outages) and internal process
+improvement requests.
+
+Important nuance from training data: this queue receives a significant volume
+of tickets that appear technically oriented (software crashes, analytics tool
+issues, security incidents) but originate from an internal HR or employee
+context. The HR queue also handles requests for employee training on project
+management software, onboarding documentation, and internal process changes.
+
+Key ticket types: Request (training, onboarding, integration guidance),
+Incident (HR portal access failures, internal system outages), Change
+(updates to training programs, HR process improvements), Problem (ongoing
+data or system issues affecting internal staff).
+
+COMMON TAGS IN THIS QUEUE
+--------------------------
+Tech Support, IT, Performance, Documentation, Feedback, Security, Bug,
+Feature, Employee, Disruption, Outage, Training, HR, Network.
+
+REPRESENTATIVE EXAMPLES
+-----------------------
+  - "Inquiry about Training Options for New Employees Using Project Management
+    Software: Seeking guidance on training programs for new employees on the
+    project management SaaS platform. Requesting documentation and onboarding
+    resources." [high|Request]
+
+  - "HR Portal Access Problem: Reporting an issue with the HR portal. One
+    employee is unable to access the portal, likely due to recent system
+    updates causing login errors." [low|Incident]
+
+  - "Support for Enhancing Employee Training Programs: Request to improve
+    the process of writing and enhancing employee training programs using
+    analytical tools. The aim is to boost investment optimization skills
+    among staff." [medium|Change]
+
+  - "Safety of Medical Information: Put in place stronger encryption measures
+    for medical records and internal HR data systems." [medium|Change]
+
+  - "Encountered Data Losses While Analyzing Investment Portfolios Using
+    RapidMiner Firebase: Facing data loss issues when analyzing investment
+    portfolios with RapidMiner Firebase. There might be integration problems
+    causing this." [high|Incident]
+
+  - "Human Resources Concern: An incident affecting the HR queue is impacting
+    the SaaS platform. The suspected cause is a potential server overload due
+    to a configuration change." [medium|Incident]
+
+  - "Reported Incident Concerning Possible Security Breach: A possible security
+    breach may have occurred affecting internal HR and employee data systems.
+    Initial steps included resetting passwords and reviewing access logs." [high|Incident]
+
+  - "Computer Freezes While Using Project Management Software: I am experiencing
+    an issue where my computer freezes when I try to use the project management
+    software. I have restarted my machine but the problem persists." [low|Incident]
+
+PRIORITY GUIDANCE FOR THIS QUEUE
+---------------------------------
+HIGH: New employee cannot start work due to missing system access or equipment;
+confirmed internal data breach or security incident; large-scale HR system
+outage affecting all employees; critical onboarding failure.
+
+MEDIUM: Single employee facing access or software issues; training program
+update requests for active cohorts; HR portal degradation affecting partial
+functionality; internal platform changes with a moderate deadline.
+
+LOW: General HR information requests; minor software issues with workarounds
+available; routine requests to update employee records; non-urgent training
+material requests; early-stage enquiries about HR tools.
+
+ROUTING DECISION GUIDANCE
+--------------------------
+Route to Human Resources when: the submitter is an employee raising an internal
+matter; the ticket references payroll, leave, onboarding, offboarding, HR
+systems, employee training, benefits, or employment-related processes; or the
+ticket involves internal access to HR-specific platforms.
+
+Do NOT route here if the issue is about an IT system that is not HR-specific
+(route to IT Support instead), or if the person is an external customer rather
+than an employee.
