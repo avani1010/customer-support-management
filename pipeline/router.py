@@ -59,7 +59,7 @@ class RoutingResult:
     fast_path:        bool = False   # True = transformer only, RAG skipped
 
 
-def route_ticket(raw_text, groq_client,
+def route_ticket(raw_text,
                  model, tokenizer, queue_encoder, priority_encoder, device,
                  embedder,                          # all-MiniLM-L6-v2 SentenceTransformer
                  faiss_index, bm25, all_chunks, cross_encoder,
@@ -70,7 +70,7 @@ def route_ticket(raw_text, groq_client,
     log.info("=" * 60)
 
     # ── Stage 1: clean and restructure raw ticket ──────────────────────────
-    cleaned_text = rewrite_query(raw_text, groq_client)
+    cleaned_text = rewrite_query(raw_text)
 
     # ── Stage 2a: transformer classifies dept + priority ───────────────────
     transformer_result = transformer_predict(
@@ -144,7 +144,7 @@ def route_ticket(raw_text, groq_client,
 
     # ── Stage 3: LLM reads everything and decides ─────────────────────────
     generation = generate_routing(
-        cleaned_text, transformer_result, retrieved_chunks, groq_client,
+        cleaned_text, transformer_result, retrieved_chunks,
         priority_chunk=priority_chunk,
         rag_gap=rag_gap,
         dept_confident=dept_confident,

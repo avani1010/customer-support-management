@@ -3,13 +3,18 @@ Stage 1 — Query Rewriting
 Groq LLM cleans the raw ticket before it enters the transformer or retriever.
 """
 import json, re
+import os
+
 from groq import Groq
+
 from pipeline.logger import get_logger
 
+
 log = get_logger("stage1.rewriter")
+from dotenv import load_dotenv
+load_dotenv()
 
-
-def rewrite_query(raw_text: str, groq_client: Groq) -> str:
+def rewrite_query(raw_text: str) -> str:
     log.info(f"Stage 1 — rewriting ticket ({len(raw_text)} chars)")
     log.debug(f"Raw input: {raw_text[:120]!r}")
 
@@ -30,9 +35,21 @@ def rewrite_query(raw_text: str, groq_client: Groq) -> str:
         f"TICKET:\n{raw_text.strip()}"
     )
 
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}],
+    # response = groq_client.chat.completions.create(
+    #     model="llama-3.3-70b-versatile",
+    #     messages=[{"role": "user", "content": prompt}],
+    #     temperature=0.0,
+    #     max_tokens=500,
+    # )
+    from openai import OpenAI
+
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
         temperature=0.0,
         max_tokens=500,
     )

@@ -9,10 +9,15 @@ Changes from old version:
 """
 
 import json, re
+import os
+
 from groq import Groq
+
 from pipeline.logger import get_logger
 
 log = get_logger("stage3.generator")
+from dotenv import load_dotenv
+load_dotenv()
 
 VALID_DEPTS = [
     "Billing and Payments",
@@ -147,7 +152,7 @@ Respond in this EXACT JSON format and nothing else:
 }}"""
 
 
-def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_client,
+def generate_routing(cleaned_text, transformer_result, retrieved_chunks,
                      priority_chunk=None, rag_gap=0.0,
                      dept_confident=False, priority_confident=False):
 
@@ -166,15 +171,29 @@ def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_cl
         dept_confident=dept_confident,
         priority_confident=priority_confident,
     )
+    from openai import OpenAI
 
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}],
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
         temperature=0.0,
         max_tokens=400,
     )
+
+    # response = groq_client.chat.completions.create(
+    #     model="llama-3.3-70b-versatile",
+    #     messages=[{"role": "user", "content": prompt}],
+    #     temperature=0.0,
+    #     max_tokens=400,
+    # )
     raw = response.choices[0].message.content.strip()
-    log.debug(f"Groq raw response: {raw[:200]!r}")
+    # log.debug(f"Groq raw response: {raw[:200]!r}")
+    log.debug(f"gpt4o raw response: {raw[:200]!r}")
+
 
     try:
         match = re.search(r"\{.*?\}", raw, re.DOTALL)

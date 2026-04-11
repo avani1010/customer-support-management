@@ -3,6 +3,7 @@
 __pycache__/
 *.safetensors
 *.faiss
+.env
 secrets.env
 models/
 *.pkl

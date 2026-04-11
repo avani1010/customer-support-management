@@ -10,7 +10,7 @@ ROOT = os.path.abspath(os.path.dirname(__file__))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-load_dotenv(os.path.join(ROOT, "secrets.env"))
+load_dotenv(os.path.join(ROOT, ".env"))
 HF_TOKEN   = os.getenv("HF_TOKEN")
 GROQ_TOKEN = os.getenv("GROQ_API_KEY_3")
 
@@ -390,7 +390,7 @@ with gr.Blocks(css=CSS, title="Support Ticket Router") as demo:
 
         try:
             result = route_ticket(
-                user_message.strip(), groq_client,
+                user_message.strip(),
                 model, tokenizer, queue_encoder, priority_encoder, device,
                 embedder,
                 faiss_index, bm25, all_chunks, cross_encoder,
