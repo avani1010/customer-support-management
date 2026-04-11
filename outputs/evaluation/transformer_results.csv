@@ -1,0 +1,193 @@
+true_dept,true_priority,pred_dept,dept_conf,pred_priority,priority_conf
+Billing and Payments,medium,Billing and Payments,0.9943,medium,0.8904
+Billing and Payments,low,Billing and Payments,0.9897,medium,0.8965
+Billing and Payments,high,Billing and Payments,0.9948,medium,0.8266
+Billing and Payments,low,Billing and Payments,0.9978,medium,0.8127
+Billing and Payments,medium,Billing and Payments,0.9978,medium,0.6927
+Billing and Payments,medium,Billing and Payments,0.9961,medium,0.8696
+Billing and Payments,medium,Billing and Payments,0.9961,medium,0.9004
+Billing and Payments,high,Billing and Payments,0.996,medium,0.6214
+Billing and Payments,low,Billing and Payments,0.9974,medium,0.6548
+Billing and Payments,high,Billing and Payments,0.9936,medium,0.9047
+Billing and Payments,high,Billing and Payments,0.9953,medium,0.7939
+Billing and Payments,medium,Billing and Payments,0.9948,medium,0.8958
+Billing and Payments,medium,Billing and Payments,0.9922,medium,0.9404
+Billing and Payments,high,Billing and Payments,0.9952,medium,0.5408
+Billing and Payments,high,Billing and Payments,0.9966,medium,0.697
+Billing and Payments,low,Billing and Payments,0.9967,medium,0.8584
+Billing and Payments,low,Billing and Payments,0.9951,medium,0.792
+Billing and Payments,low,Billing and Payments,0.9892,medium,0.9112
+Billing and Payments,low,Billing and Payments,0.9952,medium,0.8074
+Billing and Payments,high,Billing and Payments,0.993,medium,0.641
+Billing and Payments,medium,Billing and Payments,0.991,medium,0.8901
+Billing and Payments,medium,Billing and Payments,0.996,medium,0.7504
+Billing and Payments,low,Billing and Payments,0.9684,medium,0.9371
+Billing and Payments,high,Billing and Payments,0.9972,medium,0.7524
+Customer Service,medium,Sales and Pre-Sales,0.9423,medium,0.9673
+Customer Service,low,Sales and Pre-Sales,0.4537,medium,0.8348
+Customer Service,high,Returns and Exchanges,0.4348,medium,0.9584
+Customer Service,low,Sales and Pre-Sales,0.4826,medium,0.8953
+Customer Service,medium,Customer Service,0.4351,medium,0.9222
+Customer Service,medium,Returns and Exchanges,0.3786,medium,0.9666
+Customer Service,medium,Sales and Pre-Sales,0.6006,medium,0.9451
+Customer Service,high,General Inquiry,0.5943,medium,0.672
+Customer Service,low,Sales and Pre-Sales,0.8171,medium,0.9679
+Customer Service,high,Human Resources,0.4834,medium,0.9404
+Customer Service,high,Returns and Exchanges,0.4215,medium,0.8602
+Customer Service,medium,Sales and Pre-Sales,0.8338,medium,0.975
+Customer Service,medium,Sales and Pre-Sales,0.7306,medium,0.9688
+Customer Service,high,Billing and Payments,0.892,medium,0.9543
+Customer Service,high,Human Resources,0.458,medium,0.6116
+Customer Service,low,Sales and Pre-Sales,0.5746,medium,0.9833
+Customer Service,low,Sales and Pre-Sales,0.9694,medium,0.959
+Customer Service,low,Returns and Exchanges,0.529,medium,0.9602
+Customer Service,low,Human Resources,0.441,medium,0.9721
+Customer Service,high,Human Resources,0.7308,medium,0.6677
+Customer Service,medium,Sales and Pre-Sales,0.7963,medium,0.9629
+Customer Service,medium,Human Resources,0.9798,medium,0.7516
+Customer Service,low,Sales and Pre-Sales,0.9261,medium,0.9617
+Customer Service,high,Billing and Payments,0.8436,medium,0.8577
+General Inquiry,medium,Sales and Pre-Sales,0.8139,medium,0.9655
+General Inquiry,low,Sales and Pre-Sales,0.7157,high,0.9775
+General Inquiry,high,Returns and Exchanges,0.7022,medium,0.702
+General Inquiry,low,Human Resources,0.6909,medium,0.9233
+General Inquiry,medium,Sales and Pre-Sales,0.4916,low,0.5874
+General Inquiry,medium,Technical & IT Support,0.5619,medium,0.9584
+General Inquiry,medium,General Inquiry,0.7334,medium,0.8647
+General Inquiry,high,Returns and Exchanges,0.6558,medium,0.6898
+General Inquiry,low,Sales and Pre-Sales,0.4438,high,0.7868
+General Inquiry,high,Sales and Pre-Sales,0.5618,medium,0.7343
+General Inquiry,high,Human Resources,0.3946,medium,0.7857
+General Inquiry,medium,Sales and Pre-Sales,0.4391,medium,0.9737
+General Inquiry,medium,Sales and Pre-Sales,0.8783,medium,0.7884
+General Inquiry,high,Returns and Exchanges,0.6496,medium,0.8112
+General Inquiry,high,Returns and Exchanges,0.6575,high,0.5955
+General Inquiry,low,Sales and Pre-Sales,0.355,medium,0.9526
+General Inquiry,low,Sales and Pre-Sales,0.5044,medium,0.943
+General Inquiry,low,Sales and Pre-Sales,0.9577,medium,0.9439
+General Inquiry,low,Sales and Pre-Sales,0.5234,medium,0.9223
+General Inquiry,high,Returns and Exchanges,0.8143,medium,0.7242
+General Inquiry,medium,Human Resources,0.7338,medium,0.9316
+General Inquiry,medium,Sales and Pre-Sales,0.6491,medium,0.953
+General Inquiry,low,Service Outages and Maintenance,0.8495,high,0.5641
+General Inquiry,high,Sales and Pre-Sales,0.523,high,0.7708
+Human Resources,medium,Human Resources,0.9928,high,0.4391
+Human Resources,low,Human Resources,0.9857,medium,0.7627
+Human Resources,high,Human Resources,0.9928,medium,0.5013
+Human Resources,low,Human Resources,0.9908,medium,0.5929
+Human Resources,medium,Human Resources,0.991,medium,0.5554
+Human Resources,medium,Human Resources,0.9874,medium,0.5959
+Human Resources,medium,Human Resources,0.9367,medium,0.8356
+Human Resources,high,Human Resources,0.9907,high,0.5675
+Human Resources,low,Human Resources,0.9905,medium,0.6025
+Human Resources,high,Human Resources,0.9925,high,0.5431
+Human Resources,high,Human Resources,0.9748,medium,0.6724
+Human Resources,medium,Human Resources,0.9915,medium,0.6726
+Human Resources,medium,Human Resources,0.9914,medium,0.6023
+Human Resources,high,Human Resources,0.9924,medium,0.5533
+Human Resources,high,Human Resources,0.9617,medium,0.5477
+Human Resources,low,Human Resources,0.9921,medium,0.7366
+Human Resources,low,Human Resources,0.9912,medium,0.5573
+Human Resources,low,Human Resources,0.9757,medium,0.7913
+Human Resources,low,Human Resources,0.992,medium,0.6769
+Human Resources,high,Human Resources,0.9901,high,0.5215
+Human Resources,medium,Human Resources,0.9903,medium,0.5292
+Human Resources,medium,Human Resources,0.9928,medium,0.7207
+Human Resources,low,Human Resources,0.9879,medium,0.808
+Human Resources,high,Human Resources,0.9922,medium,0.4065
+Returns and Exchanges,medium,Human Resources,0.4188,high,0.3944
+Returns and Exchanges,low,Returns and Exchanges,0.9149,medium,0.9507
+Returns and Exchanges,high,Service Outages and Maintenance,0.9055,medium,0.6463
+Returns and Exchanges,low,Returns and Exchanges,0.7145,medium,0.8747
+Returns and Exchanges,medium,Returns and Exchanges,0.7571,medium,0.9336
+Returns and Exchanges,medium,Returns and Exchanges,0.928,medium,0.9599
+Returns and Exchanges,medium,Returns and Exchanges,0.7009,medium,0.8331
+Returns and Exchanges,high,Human Resources,0.7549,medium,0.636
+Returns and Exchanges,low,Sales and Pre-Sales,0.709,medium,0.9345
+Returns and Exchanges,high,Returns and Exchanges,0.7513,medium,0.8989
+Returns and Exchanges,high,Returns and Exchanges,0.9352,medium,0.9464
+Returns and Exchanges,medium,Human Resources,0.4642,medium,0.8842
+Returns and Exchanges,medium,Returns and Exchanges,0.9032,medium,0.854
+Returns and Exchanges,high,Returns and Exchanges,0.8491,high,0.543
+Returns and Exchanges,high,Returns and Exchanges,0.7168,medium,0.871
+Returns and Exchanges,low,Returns and Exchanges,0.9714,medium,0.9542
+Returns and Exchanges,low,Returns and Exchanges,0.7064,medium,0.8875
+Returns and Exchanges,low,Returns and Exchanges,0.8587,medium,0.9403
+Returns and Exchanges,low,Returns and Exchanges,0.9561,medium,0.8851
+Returns and Exchanges,high,Returns and Exchanges,0.6412,medium,0.8116
+Returns and Exchanges,medium,Returns and Exchanges,0.2188,medium,0.8545
+Returns and Exchanges,medium,Returns and Exchanges,0.8106,medium,0.9022
+Returns and Exchanges,low,Returns and Exchanges,0.9293,medium,0.8726
+Returns and Exchanges,high,Returns and Exchanges,0.429,medium,0.6573
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9409,medium,0.9267
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.9592,medium,0.9544
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.844,medium,0.8972
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.6169,high,0.4839
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9457,medium,0.8851
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.7883,medium,0.7808
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9007,medium,0.8797
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.8895,medium,0.9127
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.9779,medium,0.9287
+Sales and Pre-Sales,high,Returns and Exchanges,0.5118,medium,0.8993
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.66,medium,0.9311
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.7627,medium,0.9668
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.792,medium,0.9536
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.7729,medium,0.9362
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.5131,medium,0.7045
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.7964,medium,0.9284
+Sales and Pre-Sales,low,Returns and Exchanges,0.5791,medium,0.9322
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.9586,medium,0.9546
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.4667,medium,0.9083
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.7294,medium,0.9551
+Sales and Pre-Sales,medium,Sales and Pre-Sales,0.9634,medium,0.9519
+Sales and Pre-Sales,medium,Human Resources,0.9577,medium,0.8465
+Sales and Pre-Sales,low,Sales and Pre-Sales,0.8785,medium,0.9702
+Sales and Pre-Sales,high,Sales and Pre-Sales,0.776,medium,0.9443
+Service Outages and Maintenance,medium,Service Outages and Maintenance,0.9943,medium,0.6066
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9957,medium,0.615
+Service Outages and Maintenance,high,Service Outages and Maintenance,0.9893,high,0.5153
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9847,medium,0.802
+Service Outages and Maintenance,medium,Human Resources,0.3961,medium,0.9312
+Service Outages and Maintenance,medium,Service Outages and Maintenance,0.97,high,0.6599
+Service Outages and Maintenance,medium,General Inquiry,0.2132,medium,0.9135
+Service Outages and Maintenance,high,Service Outages and Maintenance,0.9961,high,0.498
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9434,high,0.6349
+Service Outages and Maintenance,high,Service Outages and Maintenance,0.9904,high,0.5024
+Service Outages and Maintenance,high,Service Outages and Maintenance,0.3615,high,0.7993
+Service Outages and Maintenance,medium,Human Resources,0.34,medium,0.9329
+Service Outages and Maintenance,medium,Technical & IT Support,0.2392,medium,0.9282
+Service Outages and Maintenance,high,Service Outages and Maintenance,0.7118,medium,0.8368
+Service Outages and Maintenance,high,Technical & IT Support,0.3412,high,0.7937
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9943,high,0.5092
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9427,medium,0.5575
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9797,medium,0.6532
+Service Outages and Maintenance,low,Sales and Pre-Sales,0.4378,medium,0.9432
+Service Outages and Maintenance,high,Human Resources,0.8547,medium,0.6099
+Service Outages and Maintenance,medium,Human Resources,0.2712,medium,0.7671
+Service Outages and Maintenance,medium,Customer Service,0.2504,medium,0.9135
+Service Outages and Maintenance,low,Service Outages and Maintenance,0.9316,medium,0.7885
+Service Outages and Maintenance,high,Sales and Pre-Sales,0.3295,medium,0.6196
+Technical & IT Support,medium,Technical & IT Support,0.7321,medium,0.6813
+Technical & IT Support,low,Human Resources,0.898,medium,0.78
+Technical & IT Support,high,Human Resources,0.3995,high,0.8988
+Technical & IT Support,low,General Inquiry,0.3916,high,0.9776
+Technical & IT Support,medium,Returns and Exchanges,0.3966,medium,0.8475
+Technical & IT Support,medium,Service Outages and Maintenance,0.9532,high,0.497
+Technical & IT Support,medium,Technical & IT Support,0.7835,medium,0.6442
+Technical & IT Support,high,Technical & IT Support,0.4789,high,0.933
+Technical & IT Support,low,Returns and Exchanges,0.2328,medium,0.8646
+Technical & IT Support,high,Human Resources,0.5199,medium,0.7335
+Technical & IT Support,high,Sales and Pre-Sales,0.3493,high,0.9667
+Technical & IT Support,medium,Technical & IT Support,0.5411,medium,0.9624
+Technical & IT Support,medium,Returns and Exchanges,0.3761,medium,0.7964
+Technical & IT Support,high,Technical & IT Support,0.8948,medium,0.8156
+Technical & IT Support,high,Human Resources,0.5436,medium,0.7462
+Technical & IT Support,low,Human Resources,0.3521,medium,0.8958
+Technical & IT Support,low,Technical & IT Support,0.6907,medium,0.8018
+Technical & IT Support,low,Technical & IT Support,0.792,medium,0.847
+Technical & IT Support,low,Returns and Exchanges,0.4471,medium,0.9207
+Technical & IT Support,high,Technical & IT Support,0.2809,high,0.6667
+Technical & IT Support,medium,General Inquiry,0.3908,medium,0.9039
+Technical & IT Support,medium,Technical & IT Support,0.7109,medium,0.7384
+Technical & IT Support,low,Returns and Exchanges,0.5508,medium,0.9835
+Technical & IT Support,high,Returns and Exchanges,0.3102,high,0.6136
