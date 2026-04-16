@@ -428,7 +428,7 @@ def render_routing_card(r):
 
     # Pipeline flow
     s1 = _flow_node(1, "Stage 1 — LLM rewrite", "done",
-                    detail="Groq normalises raw ticket text", color=_BLUE)
+                    detail="GPT normalises raw ticket text", color=_BLUE)
     s2a = _flow_node(2, "Stage 2a — DistilBERT V6", "done",
                      detail=(f"dept: {r.transformer_dept} {r.transformer_conf*100:.0f}% "
                              f"| priority: {prio} {prio_conf*100:.0f}%"), color=_INDIGO)
@@ -638,7 +638,7 @@ def render_explanation_html(r):
         gap_note = " " + muted(f"(RAG gap={rag_gap:.3f}" + (" ⚠ both uncertain" if rag_gap < 0.15 else "") + ")")
 
     rows = [
-        ("Stage 1",  "Groq rewrite",       ok("✓ normalised")),
+        ("Stage 1",  "GPT rewrite",       ok("✓ normalised")),
         ("Stage 2a", "Transformer dept",    _mono(f'{r.transformer_dept} {r.transformer_conf*100:.1f}%') + gap_note),
         ("Stage 2a", "Transformer priority", _mono(f'{r.priority} {prio_conf*100:.1f}%')),
         ("Stage 2a", "Top-3 candidates",    top3_txt),

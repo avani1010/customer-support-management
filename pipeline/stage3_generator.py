@@ -16,7 +16,6 @@ Changes from old version:
 
 import json, re
 import os
-from groq import Groq
 from pipeline.logger import get_logger
 
 log = get_logger("stage3.generator")
@@ -227,7 +226,7 @@ def generate_routing(cleaned_text, transformer_result, retrieved_chunks, groq_cl
         max_tokens=400,
     )
     raw = response.choices[0].message.content.strip()
-    log.debug(f"Groq raw response: {raw[:200]!r}")
+    log.debug(f"GPT raw response: {raw[:200]!r}")
 
     try:
         match = re.search(r"\{.*?\}", raw, re.DOTALL)
