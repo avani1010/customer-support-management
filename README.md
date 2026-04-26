@@ -157,7 +157,7 @@ customer-support-management/
 
 ## RAG Knowledge Base
 
-The 9 compliance documents were written from scratch using TF-IDF differential analysis on the training set — identifying vocabulary that appears significantly more in each department's real tickets than in all other departments. Each document contains:
+The 9 compliance documents were written from scratch using differential analysis on the training set — identifying vocabulary that appears significantly more in each department's real tickets than in all other departments. Each document contains:
 
 - **Overview** — department scope and distinction from similar departments
 - **Key Vocabulary** — exact terms extracted from real training tickets
@@ -262,4 +262,4 @@ The Gradio interface is designed for incident managers. After submitting a ticke
 - Robertson & Zaragoza (2009). The Probabilistic Relevance Framework: BM25 and Beyond
 - Cormack et al. (2009). Reciprocal Rank Fusion outperforms Condorcet and individual rank learning methods
 - Wang et al. (2020). MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression. NeurIPS
-- Zheng et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. NeurIPS
+- Zheng et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. NeurIPS`
